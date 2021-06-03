@@ -1,12 +1,16 @@
 ---
 permalink: /
-title: "academicpages is a ready-to-fork GitHub Pages template for academic personal websites"
+title: ""
 excerpt: "About me"
 author_profile: true
 redirect_from: 
   - /about/
   - /about.html
 ---
+
+![myhead](../images/myhead.jpg)
+
+​                                                       Pengfei Nie at Anhui China in 2015
 
 ### Who am I
 
