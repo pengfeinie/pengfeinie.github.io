@@ -1,6 +1,6 @@
 ---
 title: "My daughter played in community"
-excerpt: "Short description of portfolio item number 1<br/><img src='/images/huihui01.png'>"
+excerpt: "my daughter's photos of everyday life<br/><img src='../images/huihui01.png'>"
 collection: portfolio
 ---
 
