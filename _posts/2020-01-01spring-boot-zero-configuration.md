@@ -1,3 +1,11 @@
+---
+title: 'spring boot zero configuration'
+date: 2020-01-01
+tags:
+  - spring
+  - spring boot
+  - spring mvc
+---
 # Servlet 3.1 新特性
 
 为了介绍Servlet 3.1 的规范，哥们特地找到了官方文档，如下链接：
