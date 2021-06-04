@@ -1,7 +1,6 @@
 ---
 title: 'how to install carla in windows'
 date: 2020-05-01
-permalink: /posts/2013/08/blog-post-2/
 tags:
   - carla 
   - windows
