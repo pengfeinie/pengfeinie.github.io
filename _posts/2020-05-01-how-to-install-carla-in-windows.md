@@ -15,11 +15,11 @@ CARLA consists mainly of two modules, the **CARLA Simulator** and the **CARLA Py
 
 Python is a widely used high-level programming language first launched in 1991. Since then, Python has been gaining popularity and is considered as one of the most popular and flexible server-side programming languages.
 
-Unlike most Linux distributions, Windows does not come with the Python programming language by default. However, you can 
+Unlike most Linux distributions, Windows does not come with the Python programming language by default. However, you can **on your Windows server or local machine** in just a few easy steps.[^1]。 
 
 [^1]: https://phoenixnap.com/kb/how-to-install-python-3-windows
 
-** on your Windows server or local machine** in just a few easy steps.
+
 
 ## Download & Install carla 
 
