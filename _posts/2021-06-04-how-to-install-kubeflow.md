@@ -12,13 +12,13 @@ Kubeflow is a platform for data scientists who want to build and experiment with
 ## 1. Prepared Prerequisites
 
 **Before you begin**<br>
-It’s important that you have some knowledge of the following systems and tools:
-kfctl 
-https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux
-virtualBox
-https://www.virtualbox.org/wiki/Linux_Downloads
-minikube
-https://v1-18.docs.kubernetes.io/docs/tasks/tools/install-minikube/
+It’s important that you have some knowledge of the following systems and tools:<br/>
+kfctl <br/>
+[https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux](https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/#install-kubectl-binary-with-curl-on-linux)<br/>
+virtualBox<br/>
+[https://www.virtualbox.org/wiki/Linux_Downloads](https://www.virtualbox.org/wiki/Linux_Downloads)<br/>
+minikube<br/>
+[https://v1-18.docs.kubernetes.io/docs/tasks/tools/install-minikube/](https://v1-18.docs.kubernetes.io/docs/tasks/tools/install-minikube/)<br/>
 
 **Start minikube for obtaining kubernetes cluster**<br/>
 minikube start --driver=virtualbox --cpus=4 --memory=8000m --disk-size=300000m --image-repository=registry.cn-hangzhou.aliyuncs.com/google_containers
@@ -44,7 +44,7 @@ kfctl apply -V -f  kfctl_k8s_istio.v1.0.0.yaml
 
 ## 4. Port forward
 
-The default way of accessing Kubeflow is via port-forward. This enables you to get started quickly without imposing any requirements on your environment. Run the following to port-forward Istio's Ingress-Gateway to local port 8080:
+The default way of accessing Kubeflow is via port-forward. This enables you to get started quickly without imposing any requirements on your environment. Run the following to port-forward Istio's Ingress-Gateway to local port 8080:<br/>
 **kubectl port-forward --address 0.0.0.0 -n istio-system svc/istio-ingressgateway 8181:80**<br/>
 
 [https://github.com/kubeflow/manifests#port-forward](https://github.com/kubeflow/manifests#port-forward ) <br/>
