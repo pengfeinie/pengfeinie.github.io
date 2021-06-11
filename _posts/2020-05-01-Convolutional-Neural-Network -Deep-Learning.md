@@ -1,5 +1,5 @@
 ---
-title: 'Convolutional Neural Network | Deep Learning'
+title: 'Convolutional Neural Network'
 date: 2021-06-04
 tags:
   - Convolution Neural Network
