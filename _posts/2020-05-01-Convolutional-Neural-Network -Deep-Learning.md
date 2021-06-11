@@ -58,11 +58,11 @@ Padding and Stride influence how convolution operation is performed. Padding and
 
 **Padding** is used to make dimension of output equal to input by *adding zeros to the input frame of matrix*. Padding allows more spaces for kernel to cover image and is accurate for analysis of images. Due to padding, information on the borders of images are also preserved similarly as at the center of image.
 
-![img](https://i0.wp.com/developersbreach.com/wp-content/uploads/2020/08/padding_item_banner-edited-1.png?w=760&ssl=1)
+![img](../images/cnn-padding-01.png)
 
 **Stride** controls how filter convolves over input i.e., the *number of pixels shifts over the input matrix*. If stride is set to 1, filter moves across 1 pixel at a time and if stride is 2, filter moves 2 pixels at a time. More the value of stride, smaller will be the resulting output and vice versa.
 
-![img](https://i0.wp.com/developersbreach.com/wp-content/uploads/2020/08/Stride_item_banner.png?w=760&ssl=1)
+![img](../images/cnn-stride-01.png)
 
 ## ReLU (Rectified Linear Unit) Layer
 
@@ -89,7 +89,7 @@ Pooling can be done in following ways :
 - **Max-pooling** **:** It selects maximum element from the feature map. The resulting max-pooled layer holds important features of feature map. It is the most common approach as it gives better results.
 - **Average pooling :** It involves average calculation for each patch of the feature map.
 
-![img](https://i1.wp.com/developersbreach.com/wp-content/uploads/2020/08/PoolingBanner-edited-1.png?w=760&ssl=1)
+![img](../images/cnn-pooling-01.png)
 
 #### **Why pooling is important ?**
 
@@ -136,3 +136,6 @@ For binary classification problem, logistic function is used and for multi-class
 - After the final convolution, the input matrix is converted to feature vector. This feature vector is the flattened layer.
 - Feature vector serves as input to next layer(fully connected layer), where all features are collectively transferred into this network. Dropout of random nodes occurs during training to reduce overfitting in this layer.
 - Finally, the raw values which are predicted output by network are converted to probabilistic values with use of soft max function.
+
+[https://developersbreach.com/convolution-neural-network-deep-learning/](https://developersbreach.com/convolution-neural-network-deep-learning/)
+
