@@ -201,4 +201,4 @@ Below is an inception network called **GoogLeNet**, described in [*Going Deeper 
 
 
 
-https://indoml.com/2018/03/07/student-notes-convolutional-neural-networks-cnn-introduction/
+[https://indoml.com/2018/03/07/student-notes-convolutional-neural-networks-cnn-introduction/](https://indoml.com/2018/03/07/student-notes-convolutional-neural-networks-cnn-introduction/)
