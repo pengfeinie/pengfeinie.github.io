@@ -74,3 +74,7 @@ This was all about Lenet-5 architecture. Finally, to summarize The network has
 - The input to the model is a grayscale image.
 - It has 3 convolution layers, two average pooling layers, and two fully connected layers with a softmax classifier.
 - The number of trainable parameters is 60000.
+
+
+
+[https://www.analyticsvidhya.com/blog/2021/03/the-architecture-of-lenet-5/](https://www.analyticsvidhya.com/blog/2021/03/the-architecture-of-lenet-5/)
