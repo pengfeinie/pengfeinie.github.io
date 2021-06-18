@@ -6,8 +6,6 @@ tags:
   - Logging
 ---
 
-## Logging Dependencies in Spring
-
 This article deals with the choices that Spring makes and the options that developers have for logging in applications built with Spring. This is timed to coincide with the imminent release of Spring 3.0 not because we have changed anything much (although we are being more careful with dependency metadata now), but so that you can make an informed decision about how to implement and configure logging in your application. First we look briefly at what the mandatory dependencies are in Spring, and then go on to discuss in more detail how to set your application up to use some examples of common logging libraries. As an example I’ll show the dependency configuration using Maven Central style artifact naming conventions.
 
 ### The Java Logging Ecosystem
