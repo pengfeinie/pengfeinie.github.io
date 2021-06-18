@@ -161,3 +161,4 @@ log4j.category.org.springframework.beans.factory=DEBUG
 
 [https://spring.io/blog/2009/12/04/logging-dependencies-in-spring](https://spring.io/blog/2009/12/04/logging-dependencies-in-spring)
 
+[http://www.slf4j.org/manual.html#swapping](http://www.slf4j.org/manual.html#swapping)
