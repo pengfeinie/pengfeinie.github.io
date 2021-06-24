@@ -46,25 +46,21 @@ Q0uA0aVog3f5iJxCa3Hp5gxbJQ6zV6kJ0TEsuaaOhEko9sdpCoPOnRBm2i/XRD2D
 
 You need to generate a CSR and private key on the server that the certificate will be used on. You can find instructions in your server documentation or try the instructions from one of these certificate authorities:
 
-[Comodo CSR Generation Instructions](https://support.comodo.com/index.php?/comodo/Knowledgebase/List/Index/19)
-[DigiCert CSR Generation Instructions](http://www.digicert.com/csr-creation.htm?rid=011592)
-[Entrust CSR Generation Instructions](https://www.entrustdatacard.com/knowledgebase/search?keyword=csr&productType=&serverType=)
-[GeoTrust CSR Generation Instructions](http://www.rapidssl.com/ssl-certificate-support/generate-csr/index.htm)
-[Thawte CSR Generation Instructions](http://www.thawte.com/ssl-digital-certificates/technical-support/keygen/)
+[Comodo CSR Generation Instructions](https://support.comodo.com/index.php?/comodo/Knowledgebase/List/Index/19)<br/>
+[DigiCert CSR Generation Instructions](http://www.digicert.com/csr-creation.htm?rid=011592)<br/>
+[Entrust CSR Generation Instructions](https://www.entrustdatacard.com/knowledgebase/search?keyword=csr&productType=&serverType=)<br/>
+[GeoTrust CSR Generation Instructions](http://www.rapidssl.com/ssl-certificate-support/generate-csr/index.htm)<br/>
+[Thawte CSR Generation Instructions](http://www.thawte.com/ssl-digital-certificates/technical-support/keygen/)<br/>
 
 Once you have your CSR generated, you can use our SSL Wizard to find the [best SSL certificate](https://www.sslshopper.com/ssl-certificate-wizard.html) that will meet your needs. If you are familiar with OpenSSL you can use the following command to generate a CSR and private key:
 
-```
-openssl req -new -newkey rsa:2048 -nodes -out servername.csr -keyout servername.key
-```
+`openssl req -new -newkey rsa:2048 -nodes -out servername.csr -keyout servername.key`
 
 ## How do I decode a CSR?
 
 You can easily decode your CSR to see what is in it by using our [CSR Decoder](https://www.sslshopper.com/csr-decoder.html). In order to decode a CSR on your own machine using OpenSSL, use the following command:
 
-```
-openssl req -in server.csr -noout -text
-```
+`openssl req -in server.csr -noout -text`
 
 ### What is a CSR/Private Key's bit length?
 
