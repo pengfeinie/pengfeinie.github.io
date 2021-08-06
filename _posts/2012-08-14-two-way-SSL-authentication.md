@@ -6,13 +6,13 @@ tags:
   - Authentication
 ---
 
-In this article, we'll focus on the main use cases for X.509 certificate authentication – **verifying the identity of a communication peer** when using the HTTPS (HTTP over SSL) protocol.
+In this article, we'll focus on the main use cases for X.509 certificate authentication – verifying the identity of a communication peer when using the HTTPS (HTTP over SSL) protocol.
 
 Simply put – while a secure connection is established, the client verifies the server according to its certificate (issued by a trusted certificate authority).
 
-But beyond that, X.509 in Spring Security can be used to **verify the identity of a client** by the server while connecting. This is called ***“mutual authentication”,\*** and we'll look at how that's done here as well.
+But beyond that, X.509 in Spring Security can be used to verify the identity of a client by the server while connecting. This is called *“mutual authentication”,\* and we'll look at how that's done here as well.
 
-Finally, we'll touch on **when it makes sense to use this kind of authentication**.
+Finally, we'll touch on when it makes sense to use this kind of authentication.
 
 To demonstrate server verification, we'll create a simple web application and install a custom certificate authority in a browser.
 
@@ -26,12 +26,10 @@ To obtain a certificate signed by a certificate authority, you must first create
 
 As an example, we will mock a CA. And I think that you are able to know what I want. To be able to sign our client-side and server-side certificates, we need to create our own self-signed root CA certificate first. This way we'll act as our own certificate authority.
 
-```
-openssl req -x509 -sha256 -days 3650 -newkey rsa:2048 -keyout C:\Users\Jack\example\rootCA.key -out C:\Users\Jack\example\rootCA.crt
-```
+*<u>openssl req -x509 -sha256 -days 3650 -newkey rsa:2048 -keyout C:\Users\Jack\example\rootCA.key -out C:\Users\Jack\example\rootCA.crt</u>*
 
 After done, you will find the below file on your file system.
-![image-20210806150204143](E:\npfsourcecode\java\sourcecode\pengfeinie.github.io\images\image-20210806150204143.png)
+![image-20210806150204143](../images/image-20210806150204143.png)
 
 When we execute the above command, we need to provide the password for our private key. For the purpose of this document, we use *123456* as a passphrase.
 
@@ -47,9 +45,7 @@ https://www.openssl.org/docs/fips/UserGuide-2.0.pdf
 
 Give an example as follow:
 
-```
-openssl req -newkey rsa:2048 -keyout yourprivate.key -out yourcsr.csr
-```
+*<u>openssl req -newkey rsa:2048 -keyout yourprivate.key -out yourcsr.csr</u>*
 
 After entering the command, you will be asked series of questions. Your answers to these questions will be embedded in the CSR. Answer the questions as described below:
 
@@ -66,9 +62,7 @@ After entering the command, you will be asked series of questions. Your answers 
 
 #### **server-side**
 
-```
-openssl req -newkey rsa:2048 -keyout C:\Users\Jack\example\server-side\serverSidePrivate.key -out C:\Users\Jack\example\server-side\serverSide.csr
-```
+*<u>openssl req -newkey rsa:2048 -keyout C:\Users\Jack\example\server-side\serverSidePrivate.key -out C:\Users\Jack\example\server-side\serverSide.csr</u>*
 
 Some of the above CSR questions have default values that will be used if you leave the answer blank and press Enter. These default values are pulled from the OpenSSL configuration file located in the OPENSSLDIR (see Checking Your OpenSSL Version). If you want to leave a question blank without using the default value, type a "." (period) and press Enter.
 
@@ -78,21 +72,15 @@ After done this action, you can find two files (serverSide.csr and serverSidePri
 
 The private key file contains both the private key and the public key. You can extract your public key from your private key file if needed. Use the following command to extract your public key:
 
-```
-openssl rsa -in serverSidePrivate.key -pubout -out serverSidePublic.key
-```
+*<u>openssl rsa -in serverSidePrivate.key -pubout -out serverSidePublic.key</u>*
 
 After create a Certificate Signing Request we can view the files and review it. We will use `req` verb again. We will use `-noout` and `-text` options to print to the shell.
 
-```
-openssl req -noout -text -in serverSide.csr
-```
+<u>*openssl req -noout -text -in serverSide.csr*</u>
 
 #### client-side
 
-```
-openssl req -newkey rsa:2048 -keyout C:\Users\Jack\example\client-side\clientSidePrivate.key -out C:\Users\Jack\example\client-side\clientSide.csr
-```
+*<u>openssl req -newkey rsa:2048 -keyout C:\Users\Jack\example\client-side\clientSidePrivate.key -out C:\Users\Jack\example\client-side\clientSide.csr</u>*
 
 ![image-20210806151721526](../images/image-20210806151721526.png)
 
@@ -104,15 +92,11 @@ Once the certificate signing request has been created, you must submit it to a c
 
 Now, it's time to **sign the request with our \*rootCA.crt\* certificate and its private key.**
 
-```
-openssl x509 -req -CA C:\Users\Jack\example\rootCA.crt -CAkey C:\Users\Jack\example\rootCA.key -in C:\Users\Jack\example\server-side\serverSide.csr -out C:\Users\Jack\example\server-side\serverSide.crt -days 365 -CAcreateserial
-```
+*<u>openssl x509 -req -CA C:\Users\Jack\example\rootCA.crt -CAkey C:\Users\Jack\example\rootCA.key -in C:\Users\Jack\example\server-side\serverSide.csr -out C:\Users\Jack\example\server-side\serverSide.crt -days 365 -CAcreateserial</u>*
 
 After done, you can find the serverSide.crt on your filesystem.
 
-```
-openssl x509 -req -CA C:\Users\Jack\example\rootCA.crt -CAkey C:\Users\Jack\example\rootCA.key -in C:\Users\Jack\example\client-side\clientSide.csr -out C:\Users\Jack\example\client-side\clientSide.crt -days 365 -CAcreateserial
-```
+*<u>openssl x509 -req -CA C:\Users\Jack\example\rootCA.crt -CAkey C:\Users\Jack\example\rootCA.key -in C:\Users\Jack\example\client-side\clientSide.csr -out C:\Users\Jack\example\client-side\clientSide.crt -days 365 -CAcreateserial</u>*
 
 After done, you can find the clientSide.crt on your filesystem.
 
@@ -154,33 +138,25 @@ In this step, we should import the signed certificate and the corresponding priv
 
 We can use the following command to create server-side.p12* file:
 
-```
-openssl pkcs12 -export -out C:\Users\Jack\example\server-side\serverSide.p12 -name "serverSide" -inkey C:\Users\Jack\example\server-side\serverSidePrivate.key -in C:\Users\Jack\example\server-side\serverSide.crt
-```
+*<u>openssl pkcs12 -export -out C:\Users\Jack\example\server-side\serverSide.p12 -name "serverSide" -inkey C:\Users\Jack\example\server-side\serverSidePrivate.key -in C:\Users\Jack\example\server-side\serverSide.crt</u>*
 
 So we now have the serverSidePrivate*.key* and the serverSidePrivate*.crt* bundled in the single serverSide*.p12* file.
 
 Let's now use keytool to **create a \*keystore.jks\* repository and import the \*serverSide.p12\* file with a single command**:
 
-```
-keytool -importkeystore -srckeystore C:\Users\Jack\example\server-side\serverSide.p12 -srcstoretype PKCS12 -destkeystore C:\Users\Jack\example\server-side\serversidekeystore.jks -deststoretype JKS
-```
+*<u>keytool -importkeystore -srckeystore C:\Users\Jack\example\server-side\serverSide.p12 -srcstoretype PKCS12 -destkeystore C:\Users\Jack\example\server-side\serversidekeystore.jks -deststoretype JKS</u>*
 
 #### client-side
 
 We can use the following command to create client-side.p12* file:
 
-```
-openssl pkcs12 -export -out C:\Users\Jack\example\client-side\clientSide.p12 -name "clientSide" -inkey C:\Users\Jack\example\client-side\clientSidePrivate.key -in C:\Users\Jack\example\client-side\clientSide.crt
-```
+*<u>openssl pkcs12 -export -out C:\Users\Jack\example\client-side\clientSide.p12 -name "clientSide" -inkey C:\Users\Jack\example\client-side\clientSidePrivate.key -in C:\Users\Jack\example\client-side\clientSide.crt</u>*
 
 So we now have the clientSidePrivate*.key* and the clientSide*.crt* bundled in the single clientSide*.p12* file.
 
 Let's now use keytool to **create a \*keystore.jks\* repository and import the clientSide\*.p12\* file with a single command**:
 
-```
-keytool -importkeystore -srckeystore C:\Users\Jack\example\client-side\clientSide.p12 -srcstoretype PKCS12 -destkeystore C:\Users\Jack\example\client-side\clientsidekeystore.jks -deststoretype JKS
-```
+*<u>keytool -importkeystore -srckeystore C:\Users\Jack\example\client-side\clientSide.p12 -srcstoretype PKCS12 -destkeystore C:\Users\Jack\example\client-side\clientsidekeystore.jks -deststoretype JKS</u>*
 
 At this stage, we have everything in place for the server authentication part. Let's proceed with our Spring Boot application configuration.
 
@@ -190,7 +166,6 @@ From now on, we should tell the application where to find our *keystore.jks* and
 
 #### server-side
 
-```
 `server.ssl.key-store=serversidekeystore.jks`
 `server.ssl.key-store-password=123456`
 `server.ssl.key-store-type=JKS`
@@ -198,7 +173,6 @@ From now on, we should tell the application where to find our *keystore.jks* and
 `server.ssl.key-password=123456`
 `server.ssl.enabled=true`
 `server.port=9443`
-```
 
 Now , we can start server-side , let me show the diagram as follow:
 
@@ -208,7 +182,6 @@ And you can access the server through browser , it shows that the website is not
 
 #### client-side
 
-```
 `server.ssl.key-store=clientsidekeystore.jks`
 `server.ssl.key-store-password=123456`
 `server.ssl.key-store-type=JKS`
@@ -216,7 +189,6 @@ And you can access the server through browser , it shows that the website is not
 `server.ssl.key-password=123456`
 `server.ssl.enabled=true`
 `server.port=7443`
-```
 
 Now , we can start client-server , let me show the diagram as follow:
 
@@ -368,7 +340,5 @@ An overview of all possible authorization options can be found in the *[official
 
 ![image-20210806171015856](../images/image-20210806171015856.png)
 
-
-
-
+[https://www.baeldung.com/x-509-authentication-in-spring-security#2-spring-boot-application](https://www.baeldung.com/x-509-authentication-in-spring-security#2-spring-boot-application)
 
