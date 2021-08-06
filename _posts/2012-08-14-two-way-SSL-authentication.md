@@ -8,7 +8,7 @@ tags:
 
 In this article, we'll focus on the main use cases for X.509 certificate authentication – verifying the identity of a communication peer when using the HTTPS (HTTP over SSL) protocol.
 
-Simply put – while a secure connection is established, the client verifies the server according to its certificate (issued by a trusted certificate authority).But beyond that, X.509 in Spring Security can be used to verify the identity of a client by the server while connecting. This is called *“mutual authentication”,\* and we'll look at how that's done here as well.Finally, we'll touch on when it makes sense to use this kind of authentication.To demonstrate server verification, we'll create a simple web application and install a custom certificate authority in a browser.
+Simply put – while a secure connection is established, the client verifies the server according to its certificate (issued by a trusted certificate authority).But beyond that, X.509 in Spring Security can be used to verify the identity of a client by the server while connecting. This is called “mutual authentication”, and we'll look at how that's done here as well.Finally, we'll touch on when it makes sense to use this kind of authentication.To demonstrate server verification, we'll create a simple web application and install a custom certificate authority in a browser.
 
 # **1. Introduction**
 
@@ -20,7 +20,7 @@ To obtain a certificate signed by a certificate authority, you must first create
 
 As an example, we will mock a CA. And I think that you are able to know what I want. To be able to sign our client-side and server-side certificates, we need to create our own self-signed root CA certificate first. This way we'll act as our own certificate authority.
 
-*<u>openssl req -x509 -sha256 -days 3650 -newkey rsa:2048 -keyout C:\Users\Jack\example\rootCA.key -out C:\Users\Jack\example\rootCA.crt</u>*
+<u>openssl req -x509 -sha256 -days 3650 -newkey rsa:2048 -keyout C:\Users\Jack\example\rootCA.key -out C:\Users\Jack\example\rootCA.crt</u>
 
 After done, you will find the below file on your file system.
 ![image-20210806150204143](../images/image-20210806150204143.png)
@@ -35,17 +35,17 @@ When we execute the above command, we need to provide the password for our priva
 
 When using a CA issuer other than Let's Encrypt, the first step is to create the CSR. The request data associated with the CSR contains the details about your organization and public key etc. This request data is submitted to your certificate authority for them to publicly certify your organization and public key etc. 
 
-https://www.openssl.org/docs/fips/UserGuide-2.0.pdf
+[https://www.openssl.org/docs/fips/UserGuide-2.0.pdf](https://www.openssl.org/docs/fips/UserGuide-2.0.pdf)
 
 Give an example as follow:
 
-*<u>openssl req -newkey rsa:2048 -keyout yourprivate.key -out yourcsr.csr</u>*
+<u>openssl req -newkey rsa:2048 -keyout yourprivate.key -out yourcsr.csr</u>
 
 After entering the command, you will be asked series of questions. Your answers to these questions will be embedded in the CSR. 
 
 **server-side**
 
-*<u>openssl req -newkey rsa:2048 -keyout C:\Users\Jack\example\server-side\serverSidePrivate.key -out C:\Users\Jack\example\server-side\serverSide.csr</u>*
+<u>openssl req -newkey rsa:2048 -keyout C:\Users\Jack\example\server-side\serverSidePrivate.key -out C:\Users\Jack\example\server-side\serverSide.csr</u>
 
 Some of the above CSR questions have default values that will be used if you leave the answer blank and press Enter. These default values are pulled from the OpenSSL configuration file located in the OPENSSLDIR (see Checking Your OpenSSL Version). If you want to leave a question blank without using the default value, type a "." (period) and press Enter.
 
@@ -55,15 +55,15 @@ After done this action, you can find two files (serverSide.csr and serverSidePri
 
 The private key file contains both the private key and the public key. You can extract your public key from your private key file if needed. Use the following command to extract your public key:
 
-*<u>openssl rsa -in serverSidePrivate.key -pubout -out serverSidePublic.key</u>*
+<u>openssl rsa -in serverSidePrivate.key -pubout -out serverSidePublic.key</u>
 
 After create a Certificate Signing Request we can view the files and review it. We will use `req` verb again. We will use `-noout` and `-text` options to print to the shell.
 
-<u>*openssl req -noout -text -in serverSide.csr*</u>
+<u>openssl req -noout -text -in serverSide.csr</u>
 
 **client-side**
 
-*<u>openssl req -newkey rsa:2048 -keyout C:\Users\Jack\example\client-side\clientSidePrivate.key -out C:\Users\Jack\example\client-side\clientSide.csr</u>*
+<u>openssl req -newkey rsa:2048 -keyout C:\Users\Jack\example\client-side\clientSidePrivate.key -out C:\Users\Jack\example\client-side\clientSide.csr</u>
 
 ![image-20210806151721526](../images/image-20210806151721526.png)
 
@@ -73,13 +73,13 @@ After done this action, you can find two files (clientSide.csr and clientSidePri
 
 Once the certificate signing request has been created, you must submit it to a certificate authority for certification. You can obtain an SSL certificate from a commercial or public certificate authority or from an internal CA server if your organization uses one.
 
-Now, it's time to **sign the request with our \*rootCA.crt\* certificate and its private key.**
+Now, it's time to sign the request with our rootCA.crt certificate and its private key.
 
-*<u>openssl x509 -req -CA C:\Users\Jack\example\rootCA.crt -CAkey C:\Users\Jack\example\rootCA.key -in C:\Users\Jack\example\server-side\serverSide.csr -out C:\Users\Jack\example\server-side\serverSide.crt -days 365 -CAcreateserial</u>*
+<u>openssl x509 -req -CA C:\Users\Jack\example\rootCA.crt -CAkey C:\Users\Jack\example\rootCA.key -in C:\Users\Jack\example\server-side\serverSide.csr -out C:\Users\Jack\example\server-side\serverSide.crt -days 365 -CAcreateserial</u>
 
 After done, you can find the serverSide.crt on your filesystem.
 
-*<u>openssl x509 -req -CA C:\Users\Jack\example\rootCA.crt -CAkey C:\Users\Jack\example\rootCA.key -in C:\Users\Jack\example\client-side\clientSide.csr -out C:\Users\Jack\example\client-side\clientSide.crt -days 365 -CAcreateserial</u>*
+<u>openssl x509 -req -CA C:\Users\Jack\example\rootCA.crt -CAkey C:\Users\Jack\example\rootCA.key -in C:\Users\Jack\example\client-side\clientSide.csr -out C:\Users\Jack\example\client-side\clientSide.crt -days 365 -CAcreateserial</u>
 
 After done, you can find the clientSide.crt on your filesystem.
 
@@ -109,25 +109,25 @@ In this step, we should import the signed certificate and the corresponding priv
 
 We can use the following command to create server-side.p12* file:
 
-*<u>openssl pkcs12 -export -out C:\Users\Jack\example\server-side\serverSide.p12 -name "serverSide" -inkey C:\Users\Jack\example\server-side\serverSidePrivate.key -in C:\Users\Jack\example\server-side\serverSide.crt</u>*
+<u>openssl pkcs12 -export -out C:\Users\Jack\example\server-side\serverSide.p12 -name "serverSide" -inkey C:\Users\Jack\example\server-side\serverSidePrivate.key -in C:\Users\Jack\example\server-side\serverSide.crt</u>
 
 So we now have the serverSidePrivate*.key* and the serverSidePrivate*.crt* bundled in the single serverSide*.p12* file.
 
 Let's now use keytool to create a \*keystore.jks\* repository and import the \*serverSide.p12\* file with a single command:
 
-*<u>keytool -importkeystore -srckeystore C:\Users\Jack\example\server-side\serverSide.p12 -srcstoretype PKCS12 -destkeystore C:\Users\Jack\example\server-side\serversidekeystore.jks -deststoretype JKS</u>*
+<u>keytool -importkeystore -srckeystore C:\Users\Jack\example\server-side\serverSide.p12 -srcstoretype PKCS12 -destkeystore C:\Users\Jack\example\server-side\serversidekeystore.jks -deststoretype JKS</u>
 
 **client-side**
 
-We can use the following command to create client-side.p12* file:
+We can use the following command to create client-side.p12 file:
 
-*<u>openssl pkcs12 -export -out C:\Users\Jack\example\client-side\clientSide.p12 -name "clientSide" -inkey C:\Users\Jack\example\client-side\clientSidePrivate.key -in C:\Users\Jack\example\client-side\clientSide.crt</u>*
+<u>openssl pkcs12 -export -out C:\Users\Jack\example\client-side\clientSide.p12 -name "clientSide" -inkey C:\Users\Jack\example\client-side\clientSidePrivate.key -in C:\Users\Jack\example\client-side\clientSide.crt</u>
 
 So we now have the clientSidePrivate*.key* and the clientSide*.crt* bundled in the single clientSide*.p12* file.
 
-Let's now use keytool to create a \*keystore.jks\* repository and import the clientSide\*.p12\* file with a single command:
+Let's now use keytool to create a keystore.jks repository and import the clientSide.p12 file with a single command:
 
-*<u>keytool -importkeystore -srckeystore C:\Users\Jack\example\client-side\clientSide.p12 -srcstoretype PKCS12 -destkeystore C:\Users\Jack\example\client-side\clientsidekeystore.jks -deststoretype JKS</u>*
+<u>keytool -importkeystore -srckeystore C:\Users\Jack\example\client-side\clientSide.p12 -srcstoretype PKCS12 -destkeystore C:\Users\Jack\example\client-side\clientsidekeystore.jks -deststoretype JKS</u>
 
 At this stage, we have everything in place for the server authentication part. Let's proceed with our Spring Boot application configuration.
 
@@ -157,30 +157,27 @@ And you can access the server through browser , it shows that the website is not
 
 ### **Step 4 : Truststore**
 
-We need to install root certificate as a trusted certificate in our application. In this stage, we'll describe client certificate authentication. This way, only clients with valid certificates signed by the authority certificate that our server trusts, can access our secured website. A trustsore in some way is the opposite of a keystore. **It holds the certificates of the external entities that we trust**. In our case, it's enough to keep the root CA certificate in the truststore. 
+We need to install root certificate as a trusted certificate in our application. In this stage, we'll describe client certificate authentication. This way, only clients with valid certificates signed by the authority certificate that our server trusts, can access our secured website. A trustsore in some way is the opposite of a keystore. It holds the certificates of the external entities that we trust. In our case, it's enough to keep the root CA certificate in the truststore. 
 
 **server-side**
 
 Let's see how to create a *truststore.jks* file and import the *rootCA.crt* using keytool:
 
-*<u>keytool -import -trustcacerts -noprompt -alias serversidetrustothers -file C:\Users\Jack\example\rootCA.crt -keystore C:\Users\Jack\example\server-side\serversidetrustotherstruststore.jks</u>*
+<u>keytool -import -trustcacerts -noprompt -alias serversidetrustothers -file C:\Users\Jack\example\rootCA.crt -keystore C:\Users\Jack\example\server-side\serversidetrustotherstruststore.jks</u>
 
 That's it, we've imported root CA certificate, and the truststore is ready to be used. As a final modification step, we have to tell the application where our truststore is located and that SSL client authentication is necessary (server.ssl.client-auth=need). So we put the following into our application.properties:
 
-<u>*server.ssl.trust-store=classpath:serversidetrustotherstruststore.jks*</u>
-<u>*server.ssl.trust-store-password=123456*</u>
-<u>*server.ssl.client-auth=need</u>*
+![image-20210806180229746](../images/image-20210806180229746.png)
 
 **client-side**
 
 Let's see how to create a *truststore.jks* file and import the *rootCA.crt* using keytool:
 
-*<u>keytool -import -trustcacerts -noprompt -alias clientsidetrustothers -file C:\Users\Jack\example\rootCA.crt -keystore C:\Users\Jack\example\client-side\clientsidetrustotherstruststore.jks</u>*
+<u>keytool -import -trustcacerts -noprompt -alias clientsidetrustothers -file C:\Users\Jack\example\rootCA.crt -keystore C:\Users\Jack\example\client-side\clientsidetrustotherstruststore.jks</u>
 
 That's it, we've imported root CA certificate, and the truststore is ready to be used. As a final modification step, we have to tell the application where our truststore is located and that SSL client authentication is necessary (server.ssl.client-auth=need). So we put the following into our application.properties:
 
-<u>*server.ssl.trust-store=classpath:clientsidetrustotherstruststore.jks*</u>
-<u>*server.ssl.trust-store-password=123456</u>*
+![image-20210806180504703](../images/image-20210806180504703.png)
 
 ## **2.3 Authorization**
 
@@ -213,7 +210,7 @@ Trust is handled by having the **root** and **intermediate** certificates of you
 
 Import the **root** and **intermediate** certificates to the **trusted root certificate** of the Java platform.
 
-*<u>keytool -importcert -keystore D:\software\java\jdk8\jre\lib\security\cacerts -storepass changeit -file C:\Users\Jack\example\rootCA.crt -alias "rootCAofExample"</u>*
+<u>keytool -importcert -keystore D:\software\java\jdk8\jre\lib\security\cacerts -storepass changeit -file C:\Users\Jack\example\rootCA.crt -alias "rootCAofExample"</u>
 
 Let *X509AuthenticationServer* to extend from *WebSecurityConfigurerAdapter* and override one of the provided configure methods. Here we configure the x.509 mechanism to parse the *Common Name (CN)* field of a certificate for extracting usernames. With this extracted usernames, Spring Security is looking up in a provided *UserDetailsService* for matching users. So we also implement this service interface containing one demo user. In production environments, this *UserDetailsService* can load its users from a JDBC Datasource*.* 
 
