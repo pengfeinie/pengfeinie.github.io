@@ -85,19 +85,7 @@ After done, you can find the clientSide.crt on your filesystem.
 
 ### **Step 3 : Get the Certificate from CA**
 
-Once the certificate authority has the request data (CSA), they will review it and sign it. After the certificate authority has signed the certificate, they will send it back to you, often with the root and/or intermediate certificate files. All these together constitute your certificate chain. The CA or Issuing Authority issues multiple certificates in a certificate chain, proving that your site's certificate was issued by the CA. This proof is validated using a public and private key pair. The public key, available to all of your site visitors, must validate the private key in order to verify the authenticity of the certificate chain.The certificate chain typically consists of three types of certificate:
-
-- Root Certificate - The certificate that identifies the certificate authority.
-- Intermediate Root Certificates - Certificates digitally signed and issued by an Intermediate CA, also called a Signing CA or Subordinate CA.
-- Identity Certificate - A certificate that links a public key value to a real-world entity such as a web server.
-
-All of these certificate files must be imported to your Application before it will be completely operational. The certificate chain will be sent in one of multiple certificate file formats. The following certificate formats are acceptable:
-
-- DER-encoded X.509 certificate (.cer, .der, .crt)
-- PEM-wrapped DER-encoded X.509 certificate (.pem, .crt, .b64)
-- DER-encoded PKCS #7 certificates (.p7, .p7b, .p7c)
-
-You must download all of the certificate files in your certificate chain to a secure location.
+Once the certificate authority has the request data (CSA), they will review it and sign it. After the certificate authority has signed the certificate, they will send it back to you, often with the root and/or intermediate certificate files. All these together constitute your certificate chain. The CA or Issuing Authority issues multiple certificates in a certificate chain, proving that your site's certificate was issued by the CA. This proof is validated using a public and private key pair. The public key, available to all of your site visitors, must validate the private key in order to verify the authenticity of the certificate chain.
 
 ### **Step 4 : Exchange root certificate**
 
@@ -117,7 +105,7 @@ A keystore is a repository that our Spring Boot application will use to hold our
 
 In this step, we should import the signed certificate and the corresponding private key to the *keystore.jks* file. We'll use the **PKCS 12** archive to package our server's private key together with the signed certificate. Then we'll import it to the newly created *keystore.jks.* 
 
-#### server-side
+**server-side**
 
 We can use the following command to create server-side.p12* file:
 
@@ -129,7 +117,7 @@ Let's now use keytool to create a \*keystore.jks\* repository and import the \*s
 
 *<u>keytool -importkeystore -srckeystore C:\Users\Jack\example\server-side\serverSide.p12 -srcstoretype PKCS12 -destkeystore C:\Users\Jack\example\server-side\serversidekeystore.jks -deststoretype JKS</u>*
 
-#### client-side
+**client-side**
 
 We can use the following command to create client-side.p12* file:
 
@@ -147,9 +135,9 @@ At this stage, we have everything in place for the server authentication part. L
 
 From now on, we should tell the application where to find our *keystore.jks* and how to access it. We set SSL to an “enabled” status and change the standard listening port to indicate a secured connection.
 
-#### server-side
+**server-side**
 
-![image-20210806174007228](E:\npfsourcecode\java\sourcecode\pengfeinie.github.io\images\image-20210806174007228.png)
+![image-20210806174007228](../images/image-20210806174007228.png)
 
 Now , we can start server-side , let me show the diagram as follow:
 
@@ -157,7 +145,7 @@ Now , we can start server-side , let me show the diagram as follow:
 
 And you can access the server through browser , it shows that the website is not secure, because client doesn't install the rootCA.crt .
 
-#### client-side
+**client-side**
 
 ![image-20210806174045435](../images/image-20210806174045435.png)
 
@@ -171,7 +159,7 @@ And you can access the server through browser , it shows that the website is not
 
 We need to install root certificate as a trusted certificate in our application. In this stage, we'll describe client certificate authentication. This way, only clients with valid certificates signed by the authority certificate that our server trusts, can access our secured website. A trustsore in some way is the opposite of a keystore. **It holds the certificates of the external entities that we trust**. In our case, it's enough to keep the root CA certificate in the truststore. 
 
-#### server-side
+**server-side**
 
 Let's see how to create a *truststore.jks* file and import the *rootCA.crt* using keytool:
 
@@ -183,7 +171,7 @@ That's it, we've imported root CA certificate, and the truststore is ready to be
 <u>*server.ssl.trust-store-password=123456*</u>
 <u>*server.ssl.client-auth=need</u>*
 
-#### client-side
+**client-side**
 
 Let's see how to create a *truststore.jks* file and import the *rootCA.crt* using keytool:
 
@@ -252,8 +240,6 @@ An overview of all possible authorization options can be found in the *[official
 ![image-20210806164245645](../images/image-20210806164245645.png)
 
 # **3. Architecture Overview**
-
-## **3.1 architecture design**
 
 ![image-20210806171015856](../images/image-20210806171015856.png)
 
