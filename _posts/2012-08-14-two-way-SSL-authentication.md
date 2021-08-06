@@ -103,17 +103,17 @@ A keystore is a repository that our Spring Boot application will use to hold our
 
 ### **Step 2 : Import certificate to the Keystore**
 
-In this step, we should import the signed certificate and the corresponding private key to the *keystore.jks* file. We'll use the **PKCS 12** archive to package our server's private key together with the signed certificate. Then we'll import it to the newly created *keystore.jks.* 
+In this step, we should import the signed certificate and the corresponding private key to the *keystore.jks* file. We'll use the PKCS 12 archive to package our server's private key together with the signed certificate. Then we'll import it to the newly created *keystore.jks.* 
 
 **server-side**
 
-We can use the following command to create server-side.p12* file:
+We can use the following command to create server-side.p12 file:
 
 <u>openssl pkcs12 -export -out C:\Users\Jack\example\server-side\serverSide.p12 -name "serverSide" -inkey C:\Users\Jack\example\server-side\serverSidePrivate.key -in C:\Users\Jack\example\server-side\serverSide.crt</u>
 
 So we now have the serverSidePrivate*.key* and the serverSidePrivate*.crt* bundled in the single serverSide*.p12* file.
 
-Let's now use keytool to create a \*keystore.jks\* repository and import the \*serverSide.p12\* file with a single command:
+Let's now use keytool to create a keystore.jks repository and import the serverSide.p12 file with a single command:
 
 <u>keytool -importkeystore -srckeystore C:\Users\Jack\example\server-side\serverSide.p12 -srcstoretype PKCS12 -destkeystore C:\Users\Jack\example\server-side\serversidekeystore.jks -deststoretype JKS</u>
 
@@ -183,7 +183,7 @@ That's it, we've imported root CA certificate, and the truststore is ready to be
 
 Authorization is the process of giving someone the ability to access a resource. In which case, when server-side and client-side authenticated each other successfully, so they can request data for each other. In such cases, does it mean that they can access all API each other ? No , you should grant access permissions after authenticate successfully, it means that someone only can access the limited resources.
 
-***Before you start your app, please set below JVM parameters.\***
+**Before you start your app, please set below JVM parameters.**
 
 -Djavax.net.ssl.keyStoreType=jks<br/>
 -Djavax.net.ssl.keyStore=E:\npfsourcecode\java\sourcecode\two-way-ssl-authentication\server-side\src\main\resources\serversidekeystore.jks<br/>
