@@ -1,13 +1,10 @@
 ---
 title: 'two-way SSL authentication'
 date: 2012-08-14
-permalink: /posts/2012/08/two-way-SSL-authentication/
 tags:
   - X.509 
   - Authentication
 ---
-
-# **1. Background**
 
 In this article, we'll focus on the main use cases for X.509 certificate authentication – **verifying the identity of a communication peer** when using the HTTPS (HTTP over SSL) protocol.
 
@@ -19,13 +16,13 @@ Finally, we'll touch on **when it makes sense to use this kind of authentication
 
 To demonstrate server verification, we'll create a simple web application and install a custom certificate authority in a browser.
 
-# **2. Introduction**
+# **1. Introduction**
 
-## **2. 1 Certificate Authority**
+## **1. 1 Certificate Authority**
 
 To obtain a certificate signed by a certificate authority, you must first create a certificate signing request (CSR). You will then submit the request data to a certificate authority. 
 
-# **3. You should do**
+# **2. You should do**
 
 As an example, we will mock a CA. And I think that you are able to know what I want. To be able to sign our client-side and server-side certificates, we need to create our own self-signed root CA certificate first. This way we'll act as our own certificate authority.
 
@@ -40,7 +37,7 @@ When we execute the above command, we need to provide the password for our priva
 
 ![image-20210806150246489](../images/image-20210806150246489.png)
 
-## **3.1 Create a Certificate Signed by a Certificate Authority**
+## **2.1 Create a Certificate Signed by a Certificate Authority**
 
 ### **Step 1 : Create a CSR and** **private key**
 
@@ -139,7 +136,7 @@ You must download all of the certificate files in your certificate chain to a se
 
 To insure confidence that you can be trusted by client, you should send root certificate to client, in contrary, you will also get the root certificate from other side. 
 
-## **3.2 Authentication**
+## **2.2 Authentication**
 
 Mutual SSL authentication or certificate based mutual authentication refers to two parties authenticating each other through verifying the provided digital certificate so that both parties are assured of the others' identity. In technology terms, it refers to a client (web browser or client application) authenticating themselves to a server (website or server application) and that server also authenticating itself to the client through verifying the public key certificate/digital certificate issued by the trusted Certificate Authorities (CAs). Because authentication relies on digital certificates, certification authorities are an important part of the mutual authentication process. 
 
@@ -260,7 +257,7 @@ server.ssl.trust-store=classpath:clientsidetrustotherstruststore.jks
 server.ssl.trust-store-password=123456
 ```
 
-## **3.3 Authorization**
+## **2.3 Authorization**
 
 Authorization is the process of giving someone the ability to access a resource. In which case, when server-side and client-side authenticated each other successfully, so they can request data for each other. In such cases, does it mean that they can access all API each other ? No , you should grant access permissions after authenticate successfully, it means that someone only can access the limited resources.
 
@@ -365,11 +362,11 @@ An overview of all possible authorization options can be found in the *[official
 
 ![image-20210806164245645](../images/image-20210806164245645.png)
 
-# **4. Architecture Overview**
+# **3. Architecture Overview**
 
-## **4.1 architecture design**
+## **3.1 architecture design**
 
-
+![image-20210806171015856](../images/image-20210806171015856.png)
 
 
 
