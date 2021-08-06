@@ -242,3 +242,4 @@ An overview of all possible authorization options can be found in the *[official
 
 [https://www.baeldung.com/x-509-authentication-in-spring-security#2-spring-boot-application](https://www.baeldung.com/x-509-authentication-in-spring-security#2-spring-boot-application)
 
+[https://github.com/pengfeinie/two-way-ssl-authentication](https://github.com/pengfeinie/two-way-ssl-authentication)
