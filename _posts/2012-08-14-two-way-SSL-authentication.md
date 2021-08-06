@@ -38,7 +38,7 @@ After done, you will find the below file on your file system.
 
 When we execute the above command, we need to provide the password for our private key. For the purpose of this document, we use *123456* as a passphrase.
 
-![image-20210806150246489](E:\npfsourcecode\java\sourcecode\pengfeinie.github.io\images\image-20210806150246489.png)
+![image-20210806150246489](../images/image-20210806150246489.png)
 
 ## **3.1 Create a Certificate Signed by a Certificate Authority**
 
@@ -75,7 +75,7 @@ openssl req -newkey rsa:2048 -keyout C:\Users\Jack\example\server-side\serverSid
 
 Some of the above CSR questions have default values that will be used if you leave the answer blank and press Enter. These default values are pulled from the OpenSSL configuration file located in the OPENSSLDIR (see Checking Your OpenSSL Version). If you want to leave a question blank without using the default value, type a "." (period) and press Enter.
 
-![image-20210806150848066](E:\npfsourcecode\java\sourcecode\pengfeinie.github.io\images\image-20210806150848066.png)
+![image-20210806150848066](../images/image-20210806150848066.png)
 
 After done this action, you can find two files (serverSide.csr and serverSidePrivate.key)in current path of your file system. 
 
@@ -97,7 +97,7 @@ openssl req -noout -text -in serverSide.csr
 openssl req -newkey rsa:2048 -keyout C:\Users\Jack\example\client-side\clientSidePrivate.key -out C:\Users\Jack\example\client-side\clientSide.csr
 ```
 
-![image-20210806151721526](E:\npfsourcecode\java\sourcecode\pengfeinie.github.io\images\image-20210806151721526.png)
+![image-20210806151721526](../images/image-20210806151721526.png)
 
 After done this action, you can find two files (clientSide.csr and clientSidePrivate.key)in current path of your file system. 
 
@@ -205,7 +205,7 @@ From now on, we should tell the application where to find our *keystore.jks* and
 
 Now , we can start server-side , let me show the diagram as follow:
 
-![image-20210806160320237](E:\npfsourcecode\java\sourcecode\pengfeinie.github.io\images\image-20210806160320237.png)
+![image-20210806160320237](../images/image-20210806160320237.png)
 
 And you can access the server through browser , it shows that the website is not secure, because client doesn't install the rootCA.crt .
 
@@ -223,7 +223,7 @@ And you can access the server through browser , it shows that the website is not
 
 Now , we can start client-server , let me show the diagram as follow:
 
-![image-20210806161134743](E:\npfsourcecode\java\sourcecode\pengfeinie.github.io\images\image-20210806161134743.png)
+![image-20210806161134743](../images/image-20210806161134743.png)
 
 And you can access the server through browser , it shows that the website is not secure, because client doesn't install the rootCA.crt .
 
@@ -357,13 +357,13 @@ An overview of all possible authorization options can be found in the *[official
 
 ***https://localhost:7443/hello/client/side***
 
-![image-20210806163555087](E:\npfsourcecode\java\sourcecode\pengfeinie.github.io\images\image-20210806163555087.png)
+![image-20210806163555087](../images/image-20210806163555087.png)
 
-![image-20210806164114236](C:\Users\Jack\AppData\Roaming\Typora\typora-user-images\image-20210806164114236.png)
+![image-20210806164114236](../images/image-20210806164114236.png)
 
-![image-20210806164150016](C:\Users\Jack\AppData\Roaming\Typora\typora-user-images\image-20210806164150016.png)
+![image-20210806164150016](../images/image-20210806164150016.png)
 
-![image-20210806164245645](C:\Users\Jack\AppData\Roaming\Typora\typora-user-images\image-20210806164245645.png)
+![image-20210806164245645](../images/image-20210806164245645.png)
 
 # **4. Architecture Overview**
 
