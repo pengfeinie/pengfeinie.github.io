@@ -8,13 +8,7 @@ tags:
 
 In this article, we'll focus on the main use cases for X.509 certificate authentication – verifying the identity of a communication peer when using the HTTPS (HTTP over SSL) protocol.
 
-Simply put – while a secure connection is established, the client verifies the server according to its certificate (issued by a trusted certificate authority).
-
-But beyond that, X.509 in Spring Security can be used to verify the identity of a client by the server while connecting. This is called *“mutual authentication”,\* and we'll look at how that's done here as well.
-
-Finally, we'll touch on when it makes sense to use this kind of authentication.
-
-To demonstrate server verification, we'll create a simple web application and install a custom certificate authority in a browser.
+Simply put – while a secure connection is established, the client verifies the server according to its certificate (issued by a trusted certificate authority).But beyond that, X.509 in Spring Security can be used to verify the identity of a client by the server while connecting. This is called *“mutual authentication”,\* and we'll look at how that's done here as well.Finally, we'll touch on when it makes sense to use this kind of authentication.To demonstrate server verification, we'll create a simple web application and install a custom certificate authority in a browser.
 
 # **1. Introduction**
 
@@ -49,7 +43,7 @@ Give an example as follow:
 
 After entering the command, you will be asked series of questions. Your answers to these questions will be embedded in the CSR. 
 
-#### **server-side**
+**server-side**
 
 *<u>openssl req -newkey rsa:2048 -keyout C:\Users\Jack\example\server-side\serverSidePrivate.key -out C:\Users\Jack\example\server-side\serverSide.csr</u>*
 
@@ -67,7 +61,7 @@ After create a Certificate Signing Request we can view the files and review it. 
 
 <u>*openssl req -noout -text -in serverSide.csr*</u>
 
-#### client-side
+**client-side**
 
 *<u>openssl req -newkey rsa:2048 -keyout C:\Users\Jack\example\client-side\clientSidePrivate.key -out C:\Users\Jack\example\client-side\clientSide.csr</u>*
 
@@ -131,7 +125,7 @@ We can use the following command to create server-side.p12* file:
 
 So we now have the serverSidePrivate*.key* and the serverSidePrivate*.crt* bundled in the single serverSide*.p12* file.
 
-Let's now use keytool to **create a \*keystore.jks\* repository and import the \*serverSide.p12\* file with a single command**:
+Let's now use keytool to create a \*keystore.jks\* repository and import the \*serverSide.p12\* file with a single command:
 
 *<u>keytool -importkeystore -srckeystore C:\Users\Jack\example\server-side\serverSide.p12 -srcstoretype PKCS12 -destkeystore C:\Users\Jack\example\server-side\serversidekeystore.jks -deststoretype JKS</u>*
 
@@ -143,7 +137,7 @@ We can use the following command to create client-side.p12* file:
 
 So we now have the clientSidePrivate*.key* and the clientSide*.crt* bundled in the single clientSide*.p12* file.
 
-Let's now use keytool to **create a \*keystore.jks\* repository and import the clientSide\*.p12\* file with a single command**:
+Let's now use keytool to create a \*keystore.jks\* repository and import the clientSide\*.p12\* file with a single command:
 
 *<u>keytool -importkeystore -srckeystore C:\Users\Jack\example\client-side\clientSide.p12 -srcstoretype PKCS12 -destkeystore C:\Users\Jack\example\client-side\clientsidekeystore.jks -deststoretype JKS</u>*
 
@@ -155,13 +149,7 @@ From now on, we should tell the application where to find our *keystore.jks* and
 
 #### server-side
 
-*<u>server.ssl.key-store=serversidekeystore.jks</u>*
-*<u>server.ssl.key-store-password=123456</u>*
-*<u>server.ssl.key-store-type=JKS</u>*
-*<u>server.ssl.key-alias=serverSide</u>*
-*<u>server.ssl.key-password=123456</u>*
-*<u>server.ssl.enabled=true</u>*
-*<u>server.port=9443*</u>
+![image-20210806174007228](E:\npfsourcecode\java\sourcecode\pengfeinie.github.io\images\image-20210806174007228.png)
 
 Now , we can start server-side , let me show the diagram as follow:
 
@@ -171,13 +159,7 @@ And you can access the server through browser , it shows that the website is not
 
 #### client-side
 
-*<u>server.ssl.key-store=clientsidekeystore.jks</u>*
-*<u>server.ssl.key-store-password=123456</u>*
-*<u>server.ssl.key-store-type=JKS</u>*
-*<u>server.ssl.key-alias=clientSide</u>*
-*<u>server.ssl.key-password=123456</u>*
-*<u>server.ssl.enabled=true</u>*
-*<u>server.port=7443*</u>
+![image-20210806174045435](../images/image-20210806174045435.png)
 
 Now , we can start client-server , let me show the diagram as follow:
 
@@ -218,13 +200,13 @@ Authorization is the process of giving someone the ability to access a resource.
 
 ***Before you start your app, please set below JVM parameters.\***
 
-*<u>-[Djavax.net](http://djavax.net/).ssl.keyStoreType=jks</u>
-<u>-[Djavax.net](http://djavax.net/).ssl.keyStore=E:\npfsourcecode\java\sourcecode\two-way-ssl-authentication\server-side\src\main\resources\serversidekeystore.jks</u>
-<u>-[Djavax.net](http://djavax.net/).ssl.keyStorePassword=123456*</u>*
+-Djavax.net.ssl.keyStoreType=jks<br/>
+-Djavax.net.ssl.keyStore=E:\npfsourcecode\java\sourcecode\two-way-ssl-authentication\server-side\src\main\resources\serversidekeystore.jks<br/>
+-Djavax.net.ssl.keyStorePassword=123456<br/><br/>
 
-*<u>-[Djavax.net](http://djavax.net/).ssl.keyStoreType=jks</u>*
-*<u>**-[Djavax.net](http://djavax.net/).ssl.keyStore=E:\npfsourcecode\java\sourcecode\two-way-ssl-authentication\client-side\src\main\resources\clientsidekeystore.jks**</u>*
-*<u>-[Djavax.net](http://djavax.net/).ssl.keyStorePassword=123456*</u>*
+-Djavax.net.ssl.keyStoreType=jks<br/>
+-Djavax.net.ssl.keyStore=E:\npfsourcecode\java\sourcecode\two-way-ssl-authentication\client-side\src\main\resources\clientsidekeystore.jks<br/>
+-Djavax.net.ssl.keyStorePassword=123456<br/>
 
 #### **Step 1 : Spring Security Configuration**
 
@@ -249,63 +231,11 @@ Let *X509AuthenticationServer* to extend from *WebSecurityConfigurerAdapter* and
 
 You have to notice that we annotate our class with @EnableWebSecurity and @EnableGlobalMethodSecurity with enabled pre-/post-authorization. With the latter we can annotate our resources with @PreAuthorize and @PostAuthorize for fine-grained access control:
 
-<u>*package org.example;*</u>
-
-<u>*import org.springframework.context.annotation.Bean;*</u>
-<u>*import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;*</u>
-<u>*import org.springframework.security.config.annotation.web.builders.HttpSecurity;*</u>
-<u>*import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;*</u>
-<u>*import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;*</u>
-<u>*import org.springframework.security.core.authority.AuthorityUtils;*</u>
-<u>*import org.springframework.security.core.userdetails.User;*</u>
-<u>*import org.springframework.security.core.userdetails.UserDetails;*</u>
-<u>*import org.springframework.security.core.userdetails.UserDetailsService;*</u>
-<u>*import org.springframework.security.core.userdetails.UsernameNotFoundException;*</u>
-
-<u>*@EnableWebSecurity*</u>
-<u>*@EnableGlobalMethodSecurity(prePostEnabled = true)*</u>
-<u>*public class X509AuthenticationServer extends WebSecurityConfigurerAdapter {*</u>
-
-​    <u>*@Override*</u>
-​    <u>*protected void configure(HttpSecurity http) throws Exception {*</u>
-​        <u>*http.authorizeRequests().anyRequest().authenticated()*</u>
-​          <u>*.and()*</u>
-​          <u>*.x509()*</u>
-​            <u>*.subjectPrincipalRegex("CN=(.*?)(?:,|$)")*</u>
-​            <u>*.userDetailsService(userDetailsService());*</u>
-​    <u>*}*</u>
-
-​    <u>*@Bean*</u>
-​    <u>*public UserDetailsService userDetailsService() {*</u>
-​        <u>*return new UserDetailsService() {*</u>
-​            <u>*@Override*</u>
-​            <u>*public UserDetails loadUserByUsername(String username) {*</u>
-​                <u>*if (username.equals("client-side.com")) {*</u>
-​                    <u>*return new User(username, "", AuthorityUtils.commaSeparatedStringToAuthorityList("hello"));*</u>
-​                <u>*}*</u>
-​                <u>*throw new UsernameNotFoundException("You don't have enough permissions to access resources !");*</u>
-​            <u>*}*</u>
-​        <u>*};*</u>
-​    <u>*}*</u>
-<u>*}*</u>
+![image-20210806174528323](../images/image-20210806174528323.png)
 
 As said previously, we are now able to use *Expression-Based Access Control* in our controller. More specifically, our authorization annotations are respected because of the *@EnableGlobalMethodSecurity* annotation in our *@Configuration*:
 
-*<u>package org.example.controller;</u>*
-
-*<u>import org.springframework.security.access.prepost.PreAuthorize;</u>*
-*<u>import org.springframework.web.bind.annotation.GetMapping;</u>*
-*<u>import org.springframework.web.bind.annotation.RestController;</u>*
-
-*<u>@RestController</u>*
-*<u>public class HelloController {</u>*
-
-​    *<u>@PreAuthorize("hasAuthority('hello')")</u>*
-​    *<u>@GetMapping(value = "/hello/server/side")</u>*
-​    *<u>public String hello() {</u>*
-​        *<u>return "hello I am server side.";</u>*
-​    *<u>}</u>*
-*<u>}</u>*
+![image-20210806174605782](../images/image-20210806174605782.png)
 
 An overview of all possible authorization options can be found in the *[official documentation](https://docs.spring.io/spring-security/site/docs/current/reference/html/authorization.html#method-security-expressions).*
 
