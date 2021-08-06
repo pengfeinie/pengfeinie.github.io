@@ -47,18 +47,7 @@ Give an example as follow:
 
 *<u>openssl req -newkey rsa:2048 -keyout yourprivate.key -out yourcsr.csr</u>*
 
-After entering the command, you will be asked series of questions. Your answers to these questions will be embedded in the CSR. Answer the questions as described below:
-
-| **Country Name (2 letter code)**             | The two-letter country code where your company is legally located. |
-| -------------------------------------------- | ------------------------------------------------------------ |
-| **State or Province Name (full name)**       | The state/province where your company is legally located.    |
-| **Locality Name (e.g., city)**               | The city where your company is legally located.              |
-| **Organization Name (e.g., company)**        | Your company's legally registered name (e.g., YourCompany, Inc.). |
-| **Organizational Unit Name (e.g., section)** | The name of your department within the organization. (You can leave this option blank; simply press **Enter**.) |
-| **Common Name (e.g., server FQDN)**          | The fully-qualified domain name (FQDN).                      |
-| **Email Address**                            | Your email address. (You can leave this option blank; simply press **Enter**.) |
-| **A challenge password**                     | Leave this option blank (simply press **Enter**).            |
-| **An optional company name**                 | Leave this option blank (simply press **Enter**).            |
+After entering the command, you will be asked series of questions. Your answers to these questions will be embedded in the CSR. 
 
 #### **server-side**
 
@@ -166,13 +155,13 @@ From now on, we should tell the application where to find our *keystore.jks* and
 
 #### server-side
 
-`server.ssl.key-store=serversidekeystore.jks`
-`server.ssl.key-store-password=123456`
-`server.ssl.key-store-type=JKS`
-`server.ssl.key-alias=serverSide`
-`server.ssl.key-password=123456`
-`server.ssl.enabled=true`
-`server.port=9443`
+*<u>server.ssl.key-store=serversidekeystore.jks</u>*
+*<u>server.ssl.key-store-password=123456</u>*
+*<u>server.ssl.key-store-type=JKS</u>*
+*<u>server.ssl.key-alias=serverSide</u>*
+*<u>server.ssl.key-password=123456</u>*
+*<u>server.ssl.enabled=true</u>*
+*<u>server.port=9443*</u>
 
 Now , we can start server-side , let me show the diagram as follow:
 
@@ -182,13 +171,13 @@ And you can access the server through browser , it shows that the website is not
 
 #### client-side
 
-`server.ssl.key-store=clientsidekeystore.jks`
-`server.ssl.key-store-password=123456`
-`server.ssl.key-store-type=JKS`
-`server.ssl.key-alias=clientSide`
-`server.ssl.key-password=123456`
-`server.ssl.enabled=true`
-`server.port=7443`
+*<u>server.ssl.key-store=clientsidekeystore.jks</u>*
+*<u>server.ssl.key-store-password=123456</u>*
+*<u>server.ssl.key-store-type=JKS</u>*
+*<u>server.ssl.key-alias=clientSide</u>*
+*<u>server.ssl.key-password=123456</u>*
+*<u>server.ssl.enabled=true</u>*
+*<u>server.port=7443*</u>
 
 Now , we can start client-server , let me show the diagram as follow:
 
@@ -204,30 +193,24 @@ We need to install root certificate as a trusted certificate in our application.
 
 Let's see how to create a *truststore.jks* file and import the *rootCA.crt* using keytool:
 
-```
-keytool -import -trustcacerts -noprompt -alias serversidetrustothers -file C:\Users\Jack\example\rootCA.crt -keystore C:\Users\Jack\example\server-side\serversidetrustotherstruststore.jks
-```
+*<u>keytool -import -trustcacerts -noprompt -alias serversidetrustothers -file C:\Users\Jack\example\rootCA.crt -keystore C:\Users\Jack\example\server-side\serversidetrustotherstruststore.jks</u>*
 
 That's it, we've imported root CA certificate, and the truststore is ready to be used. As a final modification step, we have to tell the application where our truststore is located and that SSL client authentication is necessary (server.ssl.client-auth=need). So we put the following into our application.properties:
 
-```
-server.ssl.trust-store=classpath:serversidetrustotherstruststore.jks
-server.ssl.trust-store-password=123456
-server.ssl.client-auth=need
-```
+<u>*server.ssl.trust-store=classpath:serversidetrustotherstruststore.jks*</u>
+<u>*server.ssl.trust-store-password=123456*</u>
+<u>*server.ssl.client-auth=need</u>*
 
 #### client-side
 
 Let's see how to create a *truststore.jks* file and import the *rootCA.crt* using keytool:
 
-```
-keytool -import -trustcacerts -noprompt -alias clientsidetrustothers -file C:\Users\Jack\example\rootCA.crt -keystore C:\Users\Jack\example\client-side\clientsidetrustotherstruststore.jks
-```
+*<u>keytool -import -trustcacerts -noprompt -alias clientsidetrustothers -file C:\Users\Jack\example\rootCA.crt -keystore C:\Users\Jack\example\client-side\clientsidetrustotherstruststore.jks</u>*
 
-```
-server.ssl.trust-store=classpath:clientsidetrustotherstruststore.jks
-server.ssl.trust-store-password=123456
-```
+That's it, we've imported root CA certificate, and the truststore is ready to be used. As a final modification step, we have to tell the application where our truststore is located and that SSL client authentication is necessary (server.ssl.client-auth=need). So we put the following into our application.properties:
+
+<u>*server.ssl.trust-store=classpath:clientsidetrustotherstruststore.jks*</u>
+<u>*server.ssl.trust-store-password=123456</u>*
 
 ## **2.3 Authorization**
 
@@ -235,13 +218,13 @@ Authorization is the process of giving someone the ability to access a resource.
 
 ***Before you start your app, please set below JVM parameters.\***
 
-*-[Djavax.net](http://djavax.net/).ssl.keyStoreType=jks*
-*-[Djavax.net](http://djavax.net/).ssl.keyStore=E:\npfsourcecode\java\sourcecode\two-way-ssl-authentication\server-side\src\main\resources*\serversidekeystore.jks
-*-[Djavax.net](http://djavax.net/).ssl.keyStorePassword=123456*
+*<u>-[Djavax.net](http://djavax.net/).ssl.keyStoreType=jks</u>
+<u>-[Djavax.net](http://djavax.net/).ssl.keyStore=E:\npfsourcecode\java\sourcecode\two-way-ssl-authentication\server-side\src\main\resources\serversidekeystore.jks</u>
+<u>-[Djavax.net](http://djavax.net/).ssl.keyStorePassword=123456*</u>*
 
-*-[Djavax.net](http://djavax.net/).ssl.keyStoreType=jks*
-**-[Djavax.net](http://djavax.net/).ssl.keyStore=E:\npfsourcecode\java\sourcecode\two-way-ssl-authentication\client-side\src\main\resources*\clientsidekeystore.jks*
-*-[Djavax.net](http://djavax.net/).ssl.keyStorePassword=123456*
+*<u>-[Djavax.net](http://djavax.net/).ssl.keyStoreType=jks</u>*
+*<u>**-[Djavax.net](http://djavax.net/).ssl.keyStore=E:\npfsourcecode\java\sourcecode\two-way-ssl-authentication\client-side\src\main\resources\clientsidekeystore.jks**</u>*
+*<u>-[Djavax.net](http://djavax.net/).ssl.keyStorePassword=123456*</u>*
 
 #### **Step 1 : Spring Security Configuration**
 
@@ -260,65 +243,69 @@ Trust is handled by having the **root** and **intermediate** certificates of you
 
 Import the **root** and **intermediate** certificates to the **trusted root certificate** of the Java platform.
 
-```
-keytool -importcert -keystore D:\software\java\jdk8\jre\lib\security\cacerts -storepass changeit -file C:\Users\Jack\example\rootCA.crt -alias "rootCAofExample"
-```
+*<u>keytool -importcert -keystore D:\software\java\jdk8\jre\lib\security\cacerts -storepass changeit -file C:\Users\Jack\example\rootCA.crt -alias "rootCAofExample"</u>*
 
 Let *X509AuthenticationServer* to extend from *WebSecurityConfigurerAdapter* and override one of the provided configure methods. Here we configure the x.509 mechanism to parse the *Common Name (CN)* field of a certificate for extracting usernames. With this extracted usernames, Spring Security is looking up in a provided *UserDetailsService* for matching users. So we also implement this service interface containing one demo user. In production environments, this *UserDetailsService* can load its users from a JDBC Datasource*.* 
 
 You have to notice that we annotate our class with @EnableWebSecurity and @EnableGlobalMethodSecurity with enabled pre-/post-authorization. With the latter we can annotate our resources with @PreAuthorize and @PostAuthorize for fine-grained access control:
 
-```
-package org.example;
-...
+<u>*package org.example;*</u>
 
-@EnableWebSecurity
-@EnableGlobalMethodSecurity(prePostEnabled = true)
-public class X509AuthenticationServer extends WebSecurityConfigurerAdapter {
+<u>*import org.springframework.context.annotation.Bean;*</u>
+<u>*import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;*</u>
+<u>*import org.springframework.security.config.annotation.web.builders.HttpSecurity;*</u>
+<u>*import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;*</u>
+<u>*import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;*</u>
+<u>*import org.springframework.security.core.authority.AuthorityUtils;*</u>
+<u>*import org.springframework.security.core.userdetails.User;*</u>
+<u>*import org.springframework.security.core.userdetails.UserDetails;*</u>
+<u>*import org.springframework.security.core.userdetails.UserDetailsService;*</u>
+<u>*import org.springframework.security.core.userdetails.UsernameNotFoundException;*</u>
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests().anyRequest().authenticated()
-          .and()
-          .x509()
-            .subjectPrincipalRegex("CN=(.*?)(?:,|$)")
-            .userDetailsService(userDetailsService());
-    }
+<u>*@EnableWebSecurity*</u>
+<u>*@EnableGlobalMethodSecurity(prePostEnabled = true)*</u>
+<u>*public class X509AuthenticationServer extends WebSecurityConfigurerAdapter {*</u>
 
-    @Bean
-    public UserDetailsService userDetailsService() {
-        return new UserDetailsService() {
-            @Override
-            public UserDetails loadUserByUsername(String username) {
-                if (username.equals("client-side.com")) {
-                    return new User(username, "", AuthorityUtils.commaSeparatedStringToAuthorityList("hello"));
-                }
-                throw new UsernameNotFoundException("You don't have enough permissions to access resources !");
-            }
-        };
-    }
-}
-```
+​    <u>*@Override*</u>
+​    <u>*protected void configure(HttpSecurity http) throws Exception {*</u>
+​        <u>*http.authorizeRequests().anyRequest().authenticated()*</u>
+​          <u>*.and()*</u>
+​          <u>*.x509()*</u>
+​            <u>*.subjectPrincipalRegex("CN=(.*?)(?:,|$)")*</u>
+​            <u>*.userDetailsService(userDetailsService());*</u>
+​    <u>*}*</u>
+
+​    <u>*@Bean*</u>
+​    <u>*public UserDetailsService userDetailsService() {*</u>
+​        <u>*return new UserDetailsService() {*</u>
+​            <u>*@Override*</u>
+​            <u>*public UserDetails loadUserByUsername(String username) {*</u>
+​                <u>*if (username.equals("client-side.com")) {*</u>
+​                    <u>*return new User(username, "", AuthorityUtils.commaSeparatedStringToAuthorityList("hello"));*</u>
+​                <u>*}*</u>
+​                <u>*throw new UsernameNotFoundException("You don't have enough permissions to access resources !");*</u>
+​            <u>*}*</u>
+​        <u>*};*</u>
+​    <u>*}*</u>
+<u>*}*</u>
 
 As said previously, we are now able to use *Expression-Based Access Control* in our controller. More specifically, our authorization annotations are respected because of the *@EnableGlobalMethodSecurity* annotation in our *@Configuration*:
 
-```
-package org.example.controller;
+*<u>package org.example.controller;</u>*
 
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+*<u>import org.springframework.security.access.prepost.PreAuthorize;</u>*
+*<u>import org.springframework.web.bind.annotation.GetMapping;</u>*
+*<u>import org.springframework.web.bind.annotation.RestController;</u>*
 
-@RestController
-public class HelloController {
+*<u>@RestController</u>*
+*<u>public class HelloController {</u>*
 
-    @PreAuthorize("hasAuthority('hello')")
-    @GetMapping(value = "/hello/server/side")
-    public String hello() {
-        return "hello I am server side.";
-    }
-}
-```
+​    *<u>@PreAuthorize("hasAuthority('hello')")</u>*
+​    *<u>@GetMapping(value = "/hello/server/side")</u>*
+​    *<u>public String hello() {</u>*
+​        *<u>return "hello I am server side.";</u>*
+​    *<u>}</u>*
+*<u>}</u>*
 
 An overview of all possible authorization options can be found in the *[official documentation](https://docs.spring.io/spring-security/site/docs/current/reference/html/authorization.html#method-security-expressions).*
 
