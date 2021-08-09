@@ -1,5 +1,5 @@
 ---
-title: 'Convolutional neural network: architecture'
+title: 'convolutional neural network image recognition'
 date: 2021-06-05
 tags:
   - Convolution Neural Network
