@@ -1,0 +1,6 @@
+------------------------------------------------------------------------------------------
+SSL/TLS
+------------------------------------------------------------------------------------------
+1. https://www.networkdatapedia.com/post/3-things-you-should-know-about-https-ssltls-traffic-with-wireshark
+2. https://docs.oracle.com/javase/8/docs/technotes/guides/security/jsse/tls.html
+3. https://www.tutorialsteacher.com/https/ssl-certificate-format
