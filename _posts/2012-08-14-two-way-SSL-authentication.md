@@ -1,14 +1,14 @@
 ---
-title: 'two-way SSL authentication'
+title: 'two-way ssl authentication'
 date: 2012-08-14
 tags:
   - X.509 
   - Authentication
 ---
 
-In this article, we'll focus on the main use cases for X.509 certificate authentication – verifying the identity of a communication peer when using the HTTPS (HTTP over SSL) protocol.
+In this article, we'll focus on the main use cases for X.509 certificate authentication.
 
-Simply put – while a secure connection is established, the client verifies the server according to its certificate (issued by a trusted certificate authority).But beyond that, X.509 in Spring Security can be used to verify the identity of a client by the server while connecting. This is called “mutual authentication”, and we'll look at how that's done here as well.Finally, we'll touch on when it makes sense to use this kind of authentication.To demonstrate server verification, we'll create a simple web application and install a custom certificate authority in a browser.
+Verifying the identity of a communication peer when using the HTTPS (HTTP over SSL) protocol.Simply put – while a secure connection is established, the client verifies the server according to its certificate (issued by a trusted certificate authority).But beyond that, X.509 in Spring Security can be used to verify the identity of a client by the server while connecting. This is called “mutual authentication”, and we'll look at how that's done here as well.Finally, we'll touch on when it makes sense to use this kind of authentication.To demonstrate server verification, we'll create a simple web application and install a custom certificate authority in a browser.
 
 # **1. Introduction**
 

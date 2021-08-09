@@ -6,8 +6,9 @@ tags:
   - CNN
 ---
 
+Convolutional neural network provides one of the best classification results for images. 
 
-Convolutional neural network provides one of the best classification results for images. In the [previous post](https://aigeekprogrammer.com/convolutional-neural-network-image-recognition-part-1/), you had the opportunity to learn what a convolution is and how to classify a CIFAR-10 dataset using a simple densly connected neural network. By the way, we have obtained accuracy of 47% on the test set.
+In the [previous post](https://aigeekprogrammer.com/convolutional-neural-network-image-recognition-part-1/), you had the opportunity to learn what a convolution is and how to classify a CIFAR-10 dataset using a simple densly connected neural network. By the way, we have obtained accuracy of 47% on the test set.
 
 In the second part of the tutorial we go further:
 
