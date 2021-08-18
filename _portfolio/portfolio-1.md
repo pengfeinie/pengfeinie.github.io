@@ -1,6 +1,8 @@
 ---
-title: "2021年4月份在小区玩耍"
+title: "Minghui Nie Played at home on 202104"
 collection: portfolio
 ---
 
-![huihui02](/images/huihui02.jpg)
+I am writing some words to record my daughter daily life.
+
+![huihui02](../images/huihui02.jpg)

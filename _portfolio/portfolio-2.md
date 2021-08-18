@@ -1,11 +1,11 @@
 ---
-title: "2021年6月25日-慧吃饭的场景01"
+title: "Minghui Nie have a lunch at home on 20210625"
 collection: portfolio
 ---
 
-2021年6月25日-慧吃饭的场景01<br/>很调皮，不肯坐在餐桌里面，偏偏要站着吃饭。
+Having a lunch, but want to stand on seat.
 
-<video src="/images/5ff95b32d892857750146b56319c683e.mp4" controls="controls" width="500" height="300">您的浏览器不支持播放该视频！</video>
+<video src="../images/5ff95b32d892857750146b56319c683e.mp4" controls="controls" width="500" height="300">您的浏览器不支持播放该视频！</video>
 
 
 
