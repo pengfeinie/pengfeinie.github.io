@@ -5,4 +5,4 @@ collection: portfolio
 
 I am writing some words to record my daughter daily life.
 
-![huihui02](../images/huihui02.jpg)
+![huihui02](https://pengfeinie.github.io/images/huihui02.jpg)
