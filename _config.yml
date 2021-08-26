@@ -7,7 +7,7 @@
 
 # Site Settings
 locale                   : "en-US"
-title                    : "Pengfei Nie's Homepage"
+title                    : "Pengfei Nie"
 title_separator          : "-"
 name                     : &name "Pengfei Nie"
 description              : &description "personal description"
