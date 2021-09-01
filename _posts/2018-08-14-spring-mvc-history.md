@@ -17,8 +17,6 @@ In this article, we're going to analyze and explain the most common options that
 
 [https://en.wikipedia.org/wiki/Jakarta_Servlet](https://en.wikipedia.org/wiki/Jakarta_Servlet)
 
-
-
 ![image-20210901141009993](../images/image-20210901141009993.png)
 
 [https://progressivecoder.com/the-rise-of-spring-framework/](https://progressivecoder.com/the-rise-of-spring-framework/)
@@ -41,7 +39,7 @@ As you can see, this involves two steps: (1) adding our servlet to the *servlet*
 
 Now let's register our servlet using the *@WebServlet* annotation on our custom servlet class. This eliminates the need for servlet mappings in the *web.xml* and registration of the servlet in *web.xml*:
 
-![image-20210901142142484](E:\npfsourcecode\java\sourcecode\pengfeinie.github.io\images\image-20210901142142484.png)
+![image-20210901142142484](../images/image-20210901142142484.png)
 
 The code above demonstrates how to add that annotation directly to a servlet. The servlet will still be available at the same URL path as before.
 
