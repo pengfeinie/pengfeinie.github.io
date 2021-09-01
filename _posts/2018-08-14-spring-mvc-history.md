@@ -140,7 +140,7 @@ The return value of this method is a ServletRegistration or a ServletRegistratio
 
 **Step1: web.xml**
 
-![image-20210901185214212](E:\npfsourcecode\java\sourcecode\pengfeinie.github.io\images\image-20210901185214212.png) 
+![image-20210901185214212](../images/image-20210901185214212.png) 
 
 **Step2: applicationContext.xml**
 
