@@ -11,8 +11,6 @@ When using Spring in a web application, we have several options for organizing t
 
 In this article, we're going to analyze and explain the most common options that Spring offers.
 
-
-
 ![image-20210901140126970](../images/image-20210901140126970.png)
 
 [https://en.wikipedia.org/wiki/Jakarta_Servlet](https://en.wikipedia.org/wiki/Jakarta_Servlet)
@@ -21,19 +19,17 @@ In this article, we're going to analyze and explain the most common options that
 
 [https://progressivecoder.com/the-rise-of-spring-framework/](https://progressivecoder.com/the-rise-of-spring-framework/)
 
-
-
-
-
 # How to Register a Servlet in Java
 
-### **2.1. xml-based**
+### **2.1. XML-based**
 
 The most common way to register a servlet within your J2EE application is to add it to your *web.xml* file:
 
 ![image-20210901142230421](../images/image-20210901142230421.png)
 
 As you can see, this involves two steps: (1) adding our servlet to the *servlet* tag, making sure to also specify the source path to the class the servlet resides within, and (2) specifying the URL path the servlet will be exposed on in the *url-pattern* tag. The J2EE *web.xml* file is usually found in *WebContent/WEB-INF*.
+
+[https://download.oracle.com/otn-pub/jcp/servlet-2.5-mrel2-eval-oth-JSpec/servlet-2_5-mrel2-spec.pdf](https://download.oracle.com/otn-pub/jcp/servlet-2.5-mrel2-eval-oth-JSpec/servlet-2_5-mrel2-spec.pdf)
 
 ### **2.2 Annotations-based**
 
@@ -43,9 +39,15 @@ Now let's register our servlet using the *@WebServlet* annotation on our custom 
 
 The code above demonstrates how to add that annotation directly to a servlet. The servlet will still be available at the same URL path as before.
 
+[https://download.oracle.com/otn-pub/jcp/servlet-3.0-fr-oth-JSpec/servlet-3_0-final-spec.pdf](https://download.oracle.com/otn-pub/jcp/servlet-3.0-fr-oth-JSpec/servlet-3_0-final-spec.pdf)
+
 ### 2.3 **Programmatic-based**
 
+The ability to programmatically add a servlet to a context is useful for framework developers. For example a framework could declare a controller servlet using this method. The return value of this method is a ServletRegistration or a ServletRegistration.Dynamic object which further allows you to setup the other parameters of the servlet like init-params, url-mappings etc.
+
 ![image-20210901143212929](../images/image-20210901143212929.png)
+
+[https://download.oracle.com/otn-pub/jcp/servlet-3.0-fr-oth-JSpec/servlet-3_0-final-spec.pdf](https://download.oracle.com/otn-pub/jcp/servlet-3.0-fr-oth-JSpec/servlet-3_0-final-spec.pdf)
 
 [https://www.baeldung.com/register-servlet](https://www.baeldung.com/register-servlet)
 
