@@ -126,13 +126,33 @@ The return value of this method is a ServletRegistration or a ServletRegistratio
 
 # **7. Web Application**
 
-## 7.1 Servlet 2.5(2005) + tomcat 6.0(2006)
+## 7.1 Servlet 2.5(2005)+tomcat 6.0(2006)+Jdk1.6
 
-## 7.2 Servlet 2.5(2005) + tomcat 6.0(2006) + spring mvc 2.5(2008)
+**Step1: web.xml**
 
+![image-20210901142230421](../images/image-20210901142230421.png)
 
+**Step2: servlet**
 
+![image-20210901185046884](../images/image-20210901185046884.png)
 
+## 7.2 Servlet 2.5(2005)+tomcat 6.0(2006)+spring mvc 2.5(2008)+Jdk1.6
+
+**Step1: web.xml**
+
+![image-20210901185214212](E:\npfsourcecode\java\sourcecode\pengfeinie.github.io\images\image-20210901185214212.png) 
+
+**Step2: applicationContext.xml**
+
+![image-20210901185354636](../images/image-20210901185354636.png)
+
+**Step3: dispatcherServlet-servlet.xml**
+
+![image-20210901185522325](../images/image-20210901185522325.png)
+
+**Step4: controller**
+
+![image-20210901185706090](../images/image-20210901185706090.png)
 
 
 
