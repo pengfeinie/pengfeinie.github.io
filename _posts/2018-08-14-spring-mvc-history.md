@@ -124,6 +124,18 @@ The code above demonstrates how to add that annotation directly to a servlet. Th
 
 The return value of this method is a ServletRegistration or a ServletRegistration.Dynamic object which further allows you to setup the other parameters of the servlet like init-params, url-mappings etc.
 
+# **7. Web Application**
+
+## 7.1 Servlet 2.5(2005) + tomcat 6.0(2006)
+
+## 7.2 Servlet 2.5(2005) + tomcat 6.0(2006)spring mvc 2.5.x (2008)
+
+
+
+
+
+
+
 # **7. The Root Web Application Context**
 
 **Every Spring webapp has an associated application context that is tied to its lifecycle: the root web application context.**
