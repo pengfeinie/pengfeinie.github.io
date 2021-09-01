@@ -128,7 +128,7 @@ The return value of this method is a ServletRegistration or a ServletRegistratio
 
 ## 7.1 Servlet 2.5(2005) + tomcat 6.0(2006)
 
-## 7.2 Servlet 2.5(2005) + tomcat 6.0(2006)spring mvc 2.5.x (2008)
+## 7.2 Servlet 2.5(2005) + tomcat 6.0(2006) + spring mvc 2.5(2008)
 
 
 
