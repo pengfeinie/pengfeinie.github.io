@@ -13,8 +13,6 @@ In this article, we're going to analyze and explain the most common options that
 
 ![image-20210901140126970](../images/image-20210901140126970.png)
 
-[https://en.wikipedia.org/wiki/Jakarta_Servlet](https://en.wikipedia.org/wiki/Jakarta_Servlet)
-
 ![image-20210901141009993](../images/image-20210901141009993.png)
 
 [https://progressivecoder.com/the-rise-of-spring-framework/](https://progressivecoder.com/the-rise-of-spring-framework/)
@@ -27,29 +25,21 @@ The most common way to register a servlet within your J2EE application is to add
 
 ![image-20210901142230421](../images/image-20210901142230421.png)
 
-As you can see, this involves two steps: (1) adding our servlet to the *servlet* tag, making sure to also specify the source path to the class the servlet resides within, and (2) specifying the URL path the servlet will be exposed on in the *url-pattern* tag. The J2EE *web.xml* file is usually found in *WebContent/WEB-INF*.
-
-[https://download.oracle.com/otn-pub/jcp/servlet-2.5-mrel2-eval-oth-JSpec/servlet-2_5-mrel2-spec.pdf](https://download.oracle.com/otn-pub/jcp/servlet-2.5-mrel2-eval-oth-JSpec/servlet-2_5-mrel2-spec.pdf)
+[servlet-2.5](https://download.oracle.com/otn-pub/jcp/servlet-2.5-mrel2-eval-oth-JSpec/servlet-2_5-mrel2-spec.pdf) As you can see, this involves two steps: (1) adding our servlet to the *servlet* tag, making sure to also specify the source path to the class the servlet resides within, and (2) specifying the URL path the servlet will be exposed on in the *url-pattern* tag. The J2EE *web.xml* file is usually found in *WebContent/WEB-INF*.
 
 ### **2.2 Annotations-based**
 
-Now let's register our servlet using the *@WebServlet* annotation on our custom servlet class. This eliminates the need for servlet mappings in the *web.xml* and registration of the servlet in *web.xml*:
+[servlet-3.0](https://download.oracle.com/otn-pub/jcp/servlet-3.0-fr-oth-JSpec/servlet-3_0-final-spec.pdf) Now let's register our servlet using the *@WebServlet* annotation on our custom servlet class. This eliminates the need for servlet mappings in the *web.xml* and registration of the servlet in *web.xml*:
 
 ![image-20210901142142484](../images/image-20210901142142484.png)
 
 The code above demonstrates how to add that annotation directly to a servlet. The servlet will still be available at the same URL path as before.
 
-[https://download.oracle.com/otn-pub/jcp/servlet-3.0-fr-oth-JSpec/servlet-3_0-final-spec.pdf](https://download.oracle.com/otn-pub/jcp/servlet-3.0-fr-oth-JSpec/servlet-3_0-final-spec.pdf)
-
 ### 2.3 **Programmatic-based**
 
-The ability to programmatically add a servlet to a context is useful for framework developers. For example a framework could declare a controller servlet using this method. The return value of this method is a ServletRegistration or a ServletRegistration.Dynamic object which further allows you to setup the other parameters of the servlet like init-params, url-mappings etc.
+[servlet-3.0](https://download.oracle.com/otn-pub/jcp/servlet-3.0-fr-oth-JSpec/servlet-3_0-final-spec.pdf) The ability to programmatically add a servlet to a context is useful for framework developers. For example a framework could declare a controller servlet using this method. The return value of this method is a ServletRegistration or a ServletRegistration.Dynamic object which further allows you to setup the other parameters of the servlet like init-params, url-mappings etc.
 
 ![image-20210901143212929](../images/image-20210901143212929.png)
-
-[https://download.oracle.com/otn-pub/jcp/servlet-3.0-fr-oth-JSpec/servlet-3_0-final-spec.pdf](https://download.oracle.com/otn-pub/jcp/servlet-3.0-fr-oth-JSpec/servlet-3_0-final-spec.pdf)
-
-[https://www.baeldung.com/register-servlet](https://www.baeldung.com/register-servlet)
 
 # **2. The Root Web Application Context**
 
@@ -64,3 +54,17 @@ The context in a web application is always an instance of *WebApplicationContext
 Anyway, applications usually should not be concerned about those implementation details: **the root web application context is simply a centralized place to define shared beans.**
 
 ![image-20210827132252578](../images/image-20210827132252578.png)
+
+
+
+
+
+
+
+
+
+
+
+[https://en.wikipedia.org/wiki/Jakarta_Servlet](https://en.wikipedia.org/wiki/Jakarta_Servlet)
+
+[https://www.baeldung.com/register-servlet](https://www.baeldung.com/register-servlet)
