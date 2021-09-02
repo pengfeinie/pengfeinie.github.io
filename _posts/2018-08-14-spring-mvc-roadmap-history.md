@@ -108,9 +108,7 @@ The return value of this method is a ServletRegistration or a ServletRegistratio
 
 #### 7.1 Servlet 2.5(2005)+tomcat 6.0(2006)+jdk1.6
 
-**Step1: web.xml**
-
-![image-20210901142230421](../images/image-20210901142230421.png)
+![image-20210827132252578](../images/image-20210827132252578.png)
 
 **Step2: servlet**
 
@@ -118,13 +116,13 @@ The return value of this method is a ServletRegistration or a ServletRegistratio
 
 ### 7.2 Servlet 2.5(2005)+tomcat 6.0(2006)+spring mvc 2.5(2008)+jdk1.6
 
-**Every Spring webapp has an associated application context that is tied to its lifecycle: the root web application context.**
+Every Spring webapp has an associated application context that is tied to its lifecycle: the root web application context.
 
 This is an old feature that predates Spring Web MVC, so it's not tied specifically to any web framework technology.
 
 The context is started when the application starts, and it's destroyed when it stops, thanks to a servlet context listener. The most common types of contexts can also be refreshed at runtime, although not all *ApplicationContext* implementations have this capability.
 
-Anyway, applications usually should not be concerned about those implementation details: **the root web application context is simply a centralized place to define shared beans.**
+Anyway, applications usually should not be concerned about those implementation details: the root web application context is simply a centralized place to define shared beans.
 
 The root web application context described in the previous section is managed by a listener of class *org.springframework.web.context.ContextLoaderListener*, which is part of the *spring-web* module. 
 
@@ -142,10 +140,3 @@ We can show hello world controller as below.
 
 ![image-20210901185706090](../images/image-20210901185706090.png)
 
-
-
-### **7. The Root Web Application Context**
-
-
-
-![image-20210827132252578](../images/image-20210827132252578.png)
