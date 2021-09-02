@@ -118,19 +118,27 @@ The return value of this method is a ServletRegistration or a ServletRegistratio
 
 ### 7.2 Servlet 2.5(2005)+tomcat 6.0(2006)+spring mvc 2.5(2008)+jdk1.6
 
-**Step1: web.xml**
+**Every Spring webapp has an associated application context that is tied to its lifecycle: the root web application context.**
 
-![image-20210901185214212](../images/image-20210901185214212.png) 
+This is an old feature that predates Spring Web MVC, so it's not tied specifically to any web framework technology.
 
-**Step2: applicationContext.xml**
+The context is started when the application starts, and it's destroyed when it stops, thanks to a servlet context listener. The most common types of contexts can also be refreshed at runtime, although not all *ApplicationContext* implementations have this capability.
+
+Anyway, applications usually should not be concerned about those implementation details: **the root web application context is simply a centralized place to define shared beans.**
+
+The root web application context described in the previous section is managed by a listener of class *org.springframework.web.context.ContextLoaderListener*, which is part of the *spring-web* module. 
+
+![image-20210902132630923](../images/image-20210902132630923.png)
+
+By default, the listener will load an XML application context from applicationContext.xml.
 
 ![image-20210901185354636](../images/image-20210901185354636.png)
 
-**Step3: dispatcherServlet-servlet.xml**
+And the dispatch servlet will load an XML application context from dispatchServlet-servlet.xml.
 
 ![image-20210901185522325](../images/image-20210901185522325.png)
 
-**Step4: controller**
+We can show hello world controller as below.
 
 ![image-20210901185706090](../images/image-20210901185706090.png)
 
@@ -138,14 +146,6 @@ The return value of this method is a ServletRegistration or a ServletRegistratio
 
 ### **7. The Root Web Application Context**
 
-**Every Spring webapp has an associated application context that is tied to its lifecycle: the root web application context.**
 
-This is an old feature that predates Spring Web MVC, so it's not tied specifically to any web framework technology.
-
-The context is started when the application starts, and it's destroyed when it stops, thanks to a servlet context listener. The most common types of contexts can also be refreshed at runtime, although not all *ApplicationContext* implementations have this capability.
-
-The context in a web application is always an instance of *WebApplicationContext*. That's an interface extending *ApplicationContext* with a contract for accessing the *ServletContext*.
-
-Anyway, applications usually should not be concerned about those implementation details: **the root web application context is simply a centralized place to define shared beans.**
 
 ![image-20210827132252578](../images/image-20210827132252578.png)
