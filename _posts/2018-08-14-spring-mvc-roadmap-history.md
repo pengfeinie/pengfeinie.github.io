@@ -104,7 +104,7 @@ The return value of this method is a ServletRegistration or a ServletRegistratio
 
 ## **7. Web Application**
 
-### 7.1 Servlet 2.5(2005)+tomcat 6.0(2006)+jdk1.6
+### 7.1 Servlet 2.5(2005)+tomcat 6.0(2006)+jdk1.6(2006)
 
 Here you define the inherited methods to be generated inside the servlet, by default each servlet should implement ***doGet\*** and ***doPost\*** methods, so just keep it as is and click “*Finish”.*
 
@@ -116,13 +116,11 @@ it also writes the definition of the servlet under web.xml as the following:
 
 ![image-20210903125025664](../images/image-20210903125025664.png)
 
-Now, let's test, please access link 
-
-[http://localhost:8080/servlet2.5-helloworld/v1/hello/world?name=nihao](http://localhost:8080/servlet2.5-helloworld/v1/hello/world?name=nihao)
+Now, let's test.
 
 ![image-20210903125137871](../images/image-20210903125137871.png)
 
-### 7.2 Servlet2.5(2005)+tomcat6.0(2006)+springmvc2.5(2008)+jdk1.6
+### 7.2 Servlet2.5(2005)+tomcat6.0(2006)+springmvc2.5(2008)+jdk1.6(2006)
 
 Every Spring webapp has an associated application context that is tied to its lifecycle: the root web application context.
 
@@ -148,8 +146,18 @@ We can show hello world controller as below.
 
 ![image-20210903105539421](../images/image-20210903105539421.png)
 
-Now, let's test, please access link 
-
-[http://localhost:8080/servlet2.5-springmvc-helloworld/v1/hello/world?name=nihao](http://localhost:8080/servlet2.5-springmvc-helloworld/v1/hello/world?name=nihao)
+Now, let's test.
 
 ![image-20210903124028007](../images/image-20210903124028007.png)
+
+### 7.3 Servlet3.0(2009)+tomcat7.0(2010)+jdk1.6(2006)
+
+![image-20210903132839133](../images/image-20210903132839133.png)
+
+Now, let's test.
+
+![image-20210903132932282](../images/image-20210903132932282.png)
+
+### 7.3 Servlet3.0(2009)+tomcat7.0(2010)+springmvc3.0(2009)+jdk1.6(2006)
+
+![image-20210903133745730](../images/image-20210903133745730.png)
