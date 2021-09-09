@@ -61,7 +61,7 @@ The specifications are developed and maintained by the [Java Community Process (
 
 Each specifications starts its life as a so-called Java Specification Request JSR. The JSRs are also known by the unique number they receive once the specification process starts. On the web site of the JCP you can find an overview page for each spec, and a separate download page. The download page lists various stages of each spec reflecting the development process of JCP specs. Examples are "Early Draft Review", "Public Final Draft" and "Final Release". You would like to make sure that you always access the latest documents.
 
-Different Tomcat versions implement **different** versions of the specifications (see [main site](https://tomcat.apache.org/whichversion.html), [wiki](https://cwiki.apache.org/confluence/display/TOMCAT/Tomcat+Versions)).
+Different Tomcat versions implement **different** versions of the specifications (see [main site](https://tomcat.apache.org/whichversion.html), [wiki](https://cwiki.apache.org/confluence/display/TOMCAT/Tomcat+Versions)).[https://cwiki.apache.org/confluence/display/TOMCAT/Specifications](https://cwiki.apache.org/confluence/display/TOMCAT/Specifications)
 
 | Spec versions:          | Servlet 2.5                                                  | Servlet 3.0                                                  | Servlet 3.1                                                  |
 | ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -78,7 +78,7 @@ Different Tomcat versions implement **different** versions of the specifications
 
 ## 6. How to Register Servlet
 
-### **6.1. XML-based**
+### **XML-based**
 
 [Servlet-2.5](https://download.oracle.com/otn-pub/jcp/servlet-2.5-mrel2-eval-oth-JSpec/servlet-2_5-mrel2-spec.pdf) The most common way to register a servlet within your J2EE application is to add it to your *web.xml* file:
 
@@ -104,7 +104,7 @@ The return value of this method is a ServletRegistration or a ServletRegistratio
 
 ## **7. Web Application**
 
-### 7.1 Servlet 2.5(2005)+tomcat 6.0(2006)+jdk1.6(2006)
+### Servlet 2.5(2005)+tomcat 6.0(2006)+jdk1.6(2006)
 
 Here you define the inherited methods to be generated inside the servlet, by default each servlet should implement ***doGet\*** and ***doPost\*** methods, so just keep it as is and click “*Finish”.*
 
@@ -160,4 +160,20 @@ Now, let's test.
 
 ### 7.3 Servlet3.0(2009)+tomcat7.0(2010)+springmvc3.0(2009)+jdk1.6(2006)
 
-![image-20210903133745730](../images/image-20210903133745730.png)
+| Spec versions:          | Servlet 3.0                                                  | Spring MVC 3.0.0.RELEASE                                     |
+| ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Main page:              | [JSR315](https://www.jcp.org/en/jsr/summary?id=315)          | [Spring MVC 3.0](https://docs.spring.io/spring-framework/docs/3.0.x/spring-framework-reference/html/mvc.html) |
+| Stable:                 | Final Release                                                | Final Release                                                |
+| Date:                   | 10 Dec, 2009                                                 | Dec, 2009                                                    |
+| Download Page:          | [Overview](https://jcp.org/aboutJava/communityprocess/final/jsr315/index.html) [Direct Download](https://download.oracle.com/otndocs/jcp/servlet-3.0-fr-eval-oth-JSpec/) | [Overview](https://jcp.org/aboutJava/communityprocess/final/jsr340/index.html) [Direct Download](https://mvnrepository.com/artifact/org.springframework/spring-web/3.0.0.RELEASE) |
+| Online Javadoc:         | [Java EE 6](https://docs.oracle.com/javaee/6/api/)(2009), JDK1.6(2006) | [Spring MVC 3.0](https://docs.spring.io/spring-framework/docs/3.0.x/spring-framework-reference/html/mvc.html) |
+| Minimum Tomcat version: | 7.0.0 (2010)                                                 | /                                                            |
+
+![image-20210909143608482](../images/image-20210909143608482.png)
+
+![image-20210909143814027](../images/image-20210909143814027.png)
+
+![image-20210909144719169](../images/image-20210909144719169.png)
+
+![image-20210909144143687](../images/image-20210909144143687.png)
+
