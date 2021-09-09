@@ -1,9 +1,7 @@
----
 title: 'spring mvc roadmap history'
 date: 2018-08-14
 tags:
   - spring
----
 
 ## **1. Introduction**
 
@@ -104,11 +102,22 @@ The return value of this method is a ServletRegistration or a ServletRegistratio
 
 ## **7. Web Application**
 
-### Servlet 2.5(2005)+tomcat 6.0(2006)+jdk1.6(2006)
+### 7.1 Servlet 2.5
+
+#### 7.1.1 servlet2.5-helloworld
 
 Here you define the inherited methods to be generated inside the servlet, by default each servlet should implement ***doGet\*** and ***doPost\*** methods, so just keep it as is and click “*Finish”.*
 
 After clicking finish, eclipse automatically creates a servlet class named ***HelloWorldServlet.java\*** under *org.example* package as the following:
+
+| Spec versions:          | Servlet 2.5                                                  |
+| ----------------------- | ------------------------------------------------------------ |
+| Main page:              | [JSR154](https://www.jcp.org/en/jsr/summary?id=154)          |
+| Stable:                 | Maintenance Release                                          |
+| Date:                   | 11 May, 2006                                                 |
+| Download Page:          | [Overview](https://jcp.org/aboutJava/communityprocess/final/jsr315/index.html) [Direct Download](https://download.oracle.com/otndocs/jcp/servlet-3.0-fr-eval-oth-JSpec/) |
+| Online Javadoc:         | [Java EE 5](https://docs.oracle.com/javaee/5/api/)(2006), JDK1.6(2006) |
+| Minimum Tomcat version: | 6.0.0 (2007)                                                 |
 
 ![image-20210903124247411](../images/image-20210903124247411.png)
 
@@ -120,7 +129,7 @@ Now, let's test.
 
 ![image-20210903125137871](../images/image-20210903125137871.png)
 
-### 7.2 Servlet2.5(2005)+tomcat6.0(2006)+springmvc2.5(2008)+jdk1.6(2006)
+#### 7.1.2 servlet2.5-springmvc2.5-helloworld
 
 Every Spring webapp has an associated application context that is tied to its lifecycle: the root web application context.
 
@@ -132,7 +141,16 @@ Anyway, applications usually should not be concerned about those implementation 
 
 The root web application context described in the previous section is managed by a listener of class *org.springframework.web.context.ContextLoaderListener*, which is part of the *spring-web* module. 
 
-![image-20210903123928722](../images/image-20210903123928722.png)
+| Spec versions:          | Servlet 2.5                                                  | Spring MVC 2.5                                               |
+| ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| Main page:              | [JSR154](https://www.jcp.org/en/jsr/summary?id=154)          | [Spring MVC 2.5](https://docs.spring.io/spring-framework/docs/2.5.x/reference/mvc.html) |
+| Stable:                 | Maintenance Release                                          | Final Release                                                |
+| Date:                   | 11 May, 2006                                                 | Nov, 2008                                                    |
+| Download Page:          | [Overview](https://jcp.org/aboutJava/communityprocess/final/jsr315/index.html) [Direct Download](https://download.oracle.com/otndocs/jcp/servlet-3.0-fr-eval-oth-JSpec/) | [Overview](https://jcp.org/aboutJava/communityprocess/final/jsr340/index.html) [Direct Download](https://mvnrepository.com/artifact/org.springframework/spring-web/2.5.6) |
+| Online Javadoc:         | [Java EE 5](https://docs.oracle.com/javaee/5/api/)(2006), JDK1.6(2006) | [Spring MVC 2.5](https://docs.spring.io/spring-framework/docs/2.5.x/reference/mvc.html) |
+| Minimum Tomcat version: | 6.0.0 (2007)                                                 | /                                                            |
+
+![image-20210909180514938](../images/image-20210909180514938.png)
 
 By default, the listener will load an XML application context from applicationContext.xml.
 
@@ -144,13 +162,11 @@ And the dispatch servlet will load an XML application context from dispatchServl
 
 We can show hello world controller as below.
 
-![image-20210903105539421](../images/image-20210903105539421.png)
+![image-20210909180918831](../images/image-20210909180918831.png)
 
-Now, let's test.
+![image-20210909181059729](../images/image-20210909181059729.png)
 
-![image-20210903124028007](../images/image-20210903124028007.png)
-
-### 7.3 Servlet3.0(2009)+tomcat7.0(2010)+jdk1.6(2006)
+### 7.2 Servlet3.0(2009)+tomcat7.0(2010)+jdk1.6(2006)
 
 ![image-20210903132839133](../images/image-20210903132839133.png)
 
