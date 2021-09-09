@@ -243,7 +243,7 @@ Now, let's test.
 | Download Page:          | [Overview](https://jcp.org/aboutJava/communityprocess/final/jsr315/index.html) [Direct Download](https://download.oracle.com/otndocs/jcp/servlet-3.0-fr-eval-oth-JSpec/) | [Overview](https://jcp.org/aboutJava/communityprocess/final/jsr340/index.html) [Direct Download](https://mvnrepository.com/artifact/org.springframework/spring-web/3.1.0.RELEASE) |
 | Online Javadoc:         | [Java EE 6](https://docs.oracle.com/javaee/6/api/)(2009), JDK1.6(2006) | [Spring MVC 3.1](https://docs.spring.io/spring-framework/docs/3.1.x/spring-framework-reference/html/mvc.html) |
 | Minimum Tomcat version: | 7.0.0 (2010)                                                 |                                                              |
-| Minimum Tomcat version: | Servlet3.1(2013) 8.0.0 (2014) [Java EE 7](https://docs.oracle.com/javaee/7/api/)(2013) JDK1.6(2011) | /                                                            |
+| Minimum Tomcat version: | Servlet3.1(2013) 8.0.0 (2014) [Java EE 7](https://docs.oracle.com/javaee/7/api/)(2013) JDK1.7(2011) | /                                                            |
 
 ![image-20210909184941870](../images/image-20210909184941870.png)
 
