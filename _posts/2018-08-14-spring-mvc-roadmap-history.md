@@ -101,8 +101,6 @@ Different Tomcat versions implement **different** versions of the specifications
 </web-app>
 ```
 
-![image-20210901142230421](../images/image-20210901142230421.png)
-
 As you can see, this involves two steps: (1) adding our servlet to the *servlet* tag, making sure to also specify the source path to the class the servlet resides within, and (2) specifying the URL path the servlet will be exposed on in the *url-pattern* tag. The J2EE *web.xml* file is usually found in *WebContent/WEB-INF*.
 
 ### **6.2 Annotations-based**
@@ -129,8 +127,6 @@ public class HelloWorldServlet extends HttpServlet {
 }
 ```
 
-![image-20210901142142484](../images/image-20210901142142484.png)
-
 The code above demonstrates how to add that annotation directly to a servlet. The servlet will still be available at the same URL path as before.
 
 ### 6.3 **Programmatic-based**
@@ -152,15 +148,13 @@ public class MyWebApplicationInitializer implements WebApplicationInitializer {
     public void onStartup(ServletContext servletContext) {
     	AnnotationConfigWebApplicationContext ac = new AnnotationConfigWebApplicationContext();
     	ac.register(AppConfig.class);
-        DispatcherServlet dispatcherServlet = new DispatcherServlet(ac);
-        ServletRegistration.Dynamic registration = servletContext.addServlet("dispatcherServlet", dispatcherServlet);
+        DispatcherServlet d = new DispatcherServlet(ac);
+        ServletRegistration.Dynamic registration = servletContext.addServlet("dispatcherServlet", d);
         registration.setLoadOnStartup(1);
         registration.addMapping("/");
     }
 }
 ```
-
-![image-20210901143212929](../images/image-20210901143212929.png)
 
 The return value of this method is a ServletRegistration or a ServletRegistration.Dynamic object which further allows you to setup the other parameters of the servlet like init-params, url-mappings etc.
 
