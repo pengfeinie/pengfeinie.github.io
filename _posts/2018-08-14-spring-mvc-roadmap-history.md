@@ -1,8 +1,9 @@
+---
 title: 'spring mvc roadmap history'
 date: 2018-08-14
 tags:
   - spring
-
+---
 ## **1. Introduction**
 
 When using Spring in a web application, we have several options for organizing the application contexts that wire it all up.
@@ -235,15 +236,7 @@ Now, let's test.
 
 ![image-20210909184335118](../images/image-20210909184335118.png)
 
-| Spec versions:          | Servlet 3.0                                                  | Spring MVC 3.1.0.RELEASE                                     |
-| ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Main page:              | [JSR315](https://www.jcp.org/en/jsr/summary?id=315)          | [Spring MVC 3.1](https://docs.spring.io/spring-framework/docs/3.1.x/spring-framework-reference/html/mvc.html) |
-| Stable:                 | Final Release                                                | Final Release                                                |
-| Date:                   | 10 Dec, 2009                                                 | Dec, 2011                                                    |
-| Download Page:          | [Overview](https://jcp.org/aboutJava/communityprocess/final/jsr315/index.html) [Direct Download](https://download.oracle.com/otndocs/jcp/servlet-3.0-fr-eval-oth-JSpec/) | [Overview](https://jcp.org/aboutJava/communityprocess/final/jsr340/index.html) [Direct Download](https://mvnrepository.com/artifact/org.springframework/spring-web/3.1.0.RELEASE) |
-| Online Javadoc:         | [Java EE 6](https://docs.oracle.com/javaee/6/api/)(2009), JDK1.6(2006) | [Spring MVC 3.1](https://docs.spring.io/spring-framework/docs/3.1.x/spring-framework-reference/html/mvc.html) |
-| Minimum Tomcat version: | 7.0.0 (2010)                                                 |                                                              |
-| Minimum Tomcat version: | Servlet3.1(2013) 8.0.0 (2014) [Java EE 7](https://docs.oracle.com/javaee/7/api/)(2013) JDK1.7(2011) | /                                                            |
+![image-20210910124314829](../images/image-20210910124314829.png)
 
-![image-20210909184941870](../images/image-20210909184941870.png)
+So we can see there is a bug that tomcat 7 cannot load third party jar meta-info services. This bug is fixed in  tomcat 8.
 
