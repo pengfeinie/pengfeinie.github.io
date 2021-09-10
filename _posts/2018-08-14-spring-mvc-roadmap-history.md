@@ -81,6 +81,26 @@ Different Tomcat versions implement **different** versions of the specifications
 
 [Servlet-2.5](https://download.oracle.com/otn-pub/jcp/servlet-2.5-mrel2-eval-oth-JSpec/servlet-2_5-mrel2-spec.pdf) The most common way to register a servlet within your J2EE application is to add it to your *web.xml* file:
 
+```
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+         http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         id="WebApp_ID" version="2.5">
+
+    <servlet>
+        <servlet-name>HelloWorldServlet</servlet-name>
+        <servlet-class>org.example.HelloWorldServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HelloWorldServlet</servlet-name>
+        <url-pattern>/v1/hello/world</url-pattern>
+    </servlet-mapping>
+
+</web-app>
+```
+
 ![image-20210901142230421](../images/image-20210901142230421.png)
 
 As you can see, this involves two steps: (1) adding our servlet to the *servlet* tag, making sure to also specify the source path to the class the servlet resides within, and (2) specifying the URL path the servlet will be exposed on in the *url-pattern* tag. The J2EE *web.xml* file is usually found in *WebContent/WEB-INF*.
@@ -89,6 +109,26 @@ As you can see, this involves two steps: (1) adding our servlet to the *servlet*
 
 [Servlet-3.0](https://download.oracle.com/otn-pub/jcp/servlet-3.0-fr-oth-JSpec/servlet-3_0-final-spec.pdf) Now let's register our servlet using the *@WebServlet* annotation on our custom servlet class. This eliminates the need for servlet mappings in the *web.xml* and registration of the servlet in *web.xml*:
 
+```
+package org.example;
+
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+@WebServlet(name = "helloWorldServlet",value = {"/v1/hello/world"})
+public class HelloWorldServlet extends HttpServlet {
+
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
+        String name = req.getParameter("name");
+        resp.getOutputStream().write(name.getBytes());
+    }
+}
+```
+
 ![image-20210901142142484](../images/image-20210901142142484.png)
 
 The code above demonstrates how to add that annotation directly to a servlet. The servlet will still be available at the same URL path as before.
@@ -96,6 +136,29 @@ The code above demonstrates how to add that annotation directly to a servlet. Th
 ### 6.3 **Programmatic-based**
 
 [Servlet-3.0](https://download.oracle.com/otn-pub/jcp/servlet-3.0-fr-oth-JSpec/servlet-3_0-final-spec.pdf) The ability to programmatically add a servlet to a context is useful for framework developers. For example a framework could declare a controller servlet using this method.
+
+```
+package org.example;
+
+import org.springframework.web.WebApplicationInitializer;
+import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
+import org.springframework.web.servlet.DispatcherServlet;
+import javax.servlet.ServletContext;
+import javax.servlet.ServletRegistration;
+
+public class MyWebApplicationInitializer implements WebApplicationInitializer {
+
+    @Override
+    public void onStartup(ServletContext servletContext) {
+    	AnnotationConfigWebApplicationContext ac = new AnnotationConfigWebApplicationContext();
+    	ac.register(AppConfig.class);
+        DispatcherServlet dispatcherServlet = new DispatcherServlet(ac);
+        ServletRegistration.Dynamic registration = servletContext.addServlet("dispatcherServlet", dispatcherServlet);
+        registration.setLoadOnStartup(1);
+        registration.addMapping("/");
+    }
+}
+```
 
 ![image-20210901143212929](../images/image-20210901143212929.png)
 
@@ -133,7 +196,6 @@ import java.io.IOException;
 
 public class HelloWorldServlet extends HttpServlet {
 	
-	@Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
         String name = req.getParameter("name");
         resp.getOutputStream().write(name.getBytes());
