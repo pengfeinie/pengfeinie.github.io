@@ -167,7 +167,11 @@ We can show hello world controller as below.
 
 ![image-20210909181059729](../images/image-20210909181059729.png)
 
-### 7.2 Servlet 3.0
+### 7.2 **Programmatic Configuration With** Servlet 3.0
+
+**Version 3 of the Servlet API has made configuration through the \*web.xml\* file completely optional.** Libraries can provide their web fragments, which are pieces of XML configuration that can register listeners, filters, servlets and so on.
+
+Also, users have access to an API that allows defining programmatically every element of a servlet-based application.
 
 #### 7.2.1 servlet3.0-helloworld
 
@@ -224,6 +228,12 @@ Now, let's test.
 ![image-20210909153033310](../images/image-20210909153033310.png)
 
 #### 7.2.2 servlet3.0+springmvc3.1
+
+The *spring-web* module makes use of these features and offers its API to register components of the application when it starts.
+
+Spring scans the application's classpath for instances of the *org.springframework.web.WebApplicationInitializer* class. This is an interface with a single method, *void onStartup(ServletContext servletContext) throws ServletException*, that's invoked upon application startup.
+
+Let's now look at how we can use this facility to create the same types of root web application contexts that we've seen earlier.
 
 | Spec versions:          | Servlet 3.0                                                  | Spring MVC 3.1.0.RELEASE                                     |
 | ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
