@@ -126,6 +126,7 @@ a {
 
 tt, code, kbd, samp, pre {
   font-family: $monospace;
+  font-size: .7995em;
 }
 
 pre {
@@ -139,7 +140,7 @@ figcaption > code,
 td > code {
   padding-top: 0.1rem;
   padding-bottom: 0.1rem;
-  font-size: .8875em;
+  font-size: $type-size-6;
   background: $code-background-color;
   border: 1px solid $lighter-gray;
   border-radius: $border-radius;
