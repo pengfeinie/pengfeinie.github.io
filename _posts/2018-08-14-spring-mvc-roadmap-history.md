@@ -122,22 +122,24 @@ After clicking finish, eclipse automatically creates a servlet class named ***He
 
 ![image-20210903124247411](../images/image-20210903124247411.png)
 
-> package org.example;
->
-> import javax.servlet.ServletException;
-> import javax.servlet.http.HttpServlet;
-> import javax.servlet.http.HttpServletRequest;
-> import javax.servlet.http.HttpServletResponse;
-> import java.io.IOException;
->
-> public class HelloWorldServlet extends HttpServlet {
-> 	
-> 	@Override
->     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
->         String name = req.getParameter("name");
->         resp.getOutputStream().write(name.getBytes());
->     }
-> }
+```
+package org.example;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.IOException;
+
+public class HelloWorldServlet extends HttpServlet {
+	
+	@Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        String name = req.getParameter("name");
+        resp.getOutputStream().write(name.getBytes());
+    }
+}
+```
 
 it also writes the definition of the servlet under web.xml as the following:
 
