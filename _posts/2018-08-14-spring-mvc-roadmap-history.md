@@ -4,27 +4,41 @@ date: 2018-08-14
 tags:
   - spring
 ---
+* [<strong>1\. Introduction</strong>](#1-introduction)
+* [<strong>2\. Java Ecosystem</strong>](#2-java-ecosystem)
+  * [2\.1 Servlet timeline](#21-servlet-timeline)
+  * [2\.2 J2EE timeline](#22-j2ee-timeline)
+  * [2\.3 Java timeline](#23-java-timeline)
+* [3\. Service Provider Interface](#3-service-provider-interface)
+  * [3\.1 <strong>Overview</strong>](#31-overview)
+  * [3\.2 <strong>Terms and Definitions of Java SPI</strong>](#32-terms-and-definitions-of-java-spi)
+* [4\. Servlet container](#4-servlet-container)
+  * [4\.1 Overview](#41-overview)
+* [5\. Spring](#5-spring)
+* [6\. How to Register Servlet](#6-how-to-register-servlet)
+  * [<strong>6\.1 Xml\-based</strong>](#61-xml-based)
+  * [<strong>6\.2 Annotations\-based</strong>](#62-annotations-based)
+  * [6\.3 <strong>Programmatic\-based</strong>](#63-programmatic-based)
+
 ## **1. Introduction**
 
-When using Spring in a web application, we have several options for organizing the application contexts that wire it all up.
-
-In this article, we're going to analyze and explain the most common options that Spring offers.
+When using Spring in a web application, we have several options for organizing the application contexts that wire it all up. In this article, we're going to analyze and explain the most common options that Spring offers.
 
 ## **2. Java Ecosystem**
 
 ### 2.1 Servlet timeline
 
-![image-20210901140126970](../images/image-20210901140126970.png)
+![image-20210901140126970](https://pengfeinie.github.io/images/image-20210901140126970.png)
 
 ### 2.2 J2EE timeline
 
 The Java EE - Java Platform, Enterprise Edition (formerly known as J2EE) has undergone several changes since its inception. This page covers high level time line of different versions and features introduced in each version in chronological order.
 
-![image-20210901175023598](../images/image-20210901175023598.png)
+![image-20210901175023598](https://pengfeinie.github.io/images/image-20210901175023598.png)
 
 ### 2.3 Java timeline
 
-Java has been the one of the most used and popular language. This page covers high level time line of different versions and features introduced in each version in chronological order.![image-20210901175517116](../images/image-20210901175517116.png)
+Java has been the one of the most used and popular language. This page covers high level time line of different versions and features introduced in each version in chronological order.![image-20210901175517116](https://pengfeinie.github.io/images/image-20210901175517116.png)
 
 ## 3. Service Provider Interface
 
@@ -73,11 +87,10 @@ Different Tomcat versions implement **different** versions of the specifications
 
 ## 5. Spring
 
-![image-20210901141009993](../images/image-20210901141009993.png)
-
+![image-20210901141009993](https://pengfeinie.github.io/images/image-20210901141009993.png)
 ## 6. How to Register Servlet
 
-### **XML-based**
+### **6.1 Xml-based**
 
 [Servlet-2.5](https://download.oracle.com/otn-pub/jcp/servlet-2.5-mrel2-eval-oth-JSpec/servlet-2_5-mrel2-spec.pdf) The most common way to register a servlet within your J2EE application is to add it to your *web.xml* file:
 
@@ -157,171 +170,3 @@ public class MyWebApplicationInitializer implements WebApplicationInitializer {
 ```
 
 The return value of this method is a ServletRegistration or a ServletRegistration.Dynamic object which further allows you to setup the other parameters of the servlet like init-params, url-mappings etc.
-
-## **7. Web Application**
-
-### 7.1 Servlet 2.5
-
-#### 7.1.1 servlet2.5-helloworld
-
-Here you define the inherited methods to be generated inside the servlet, by default each servlet should implement ***doGet\*** and ***doPost\*** methods, so just keep it as is and click “*Finish”.*
-
-After clicking finish, eclipse automatically creates a servlet class named ***HelloWorldServlet.java\*** under *org.example* package as the following:
-
-| Spec versions:          | Servlet 2.5                                                  |
-| ----------------------- | ------------------------------------------------------------ |
-| Main page:              | [JSR154](https://www.jcp.org/en/jsr/summary?id=154)          |
-| Stable:                 | Maintenance Release                                          |
-| Date:                   | 11 May, 2006                                                 |
-| Download Page:          | [Overview](https://jcp.org/aboutJava/communityprocess/final/jsr315/index.html) [Direct Download](https://download.oracle.com/otndocs/jcp/servlet-3.0-fr-eval-oth-JSpec/) |
-| Online Javadoc:         | [Java EE 5](https://docs.oracle.com/javaee/5/api/)(2006), JDK1.6(2006) |
-| Minimum Tomcat version: | 6.0.0 (2007)                                                 |
-
-![image-20210903124247411](../images/image-20210903124247411.png)
-
-```
-package org.example;
-
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-
-public class HelloWorldServlet extends HttpServlet {
-	
-    protected void doGet(HttpServletRequest req, HttpServletResponse resp) {
-        String name = req.getParameter("name");
-        resp.getOutputStream().write(name.getBytes());
-    }
-}
-```
-
-it also writes the definition of the servlet under web.xml as the following:
-
-![image-20210903125025664](../images/image-20210903125025664.png)
-
-Now, let's test.
-
-![image-20210903125137871](../images/image-20210903125137871.png)
-
-#### 7.1.2 servlet2.5-springmvc2.5-helloworld
-
-Every Spring webapp has an associated application context that is tied to its lifecycle: the root web application context.
-
-This is an old feature that predates Spring Web MVC, so it's not tied specifically to any web framework technology.
-
-The context is started when the application starts, and it's destroyed when it stops, thanks to a servlet context listener. The most common types of contexts can also be refreshed at runtime, although not all *ApplicationContext* implementations have this capability.
-
-Anyway, applications usually should not be concerned about those implementation details: the root web application context is simply a centralized place to define shared beans.
-
-The root web application context described in the previous section is managed by a listener of class *org.springframework.web.context.ContextLoaderListener*, which is part of the *spring-web* module. 
-
-| Spec versions:          | Servlet 2.5                                                  | Spring MVC 2.5                                               |
-| ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Main page:              | [JSR154](https://www.jcp.org/en/jsr/summary?id=154)          | [Spring MVC 2.5](https://docs.spring.io/spring-framework/docs/2.5.x/reference/mvc.html) |
-| Stable:                 | Maintenance Release                                          | Final Release                                                |
-| Date:                   | 11 May, 2006                                                 | Nov, 2008                                                    |
-| Download Page:          | [Overview](https://jcp.org/aboutJava/communityprocess/final/jsr315/index.html) [Direct Download](https://download.oracle.com/otndocs/jcp/servlet-3.0-fr-eval-oth-JSpec/) | [Overview](https://jcp.org/aboutJava/communityprocess/final/jsr340/index.html) [Direct Download](https://mvnrepository.com/artifact/org.springframework/spring-web/2.5.6) |
-| Online Javadoc:         | [Java EE 5](https://docs.oracle.com/javaee/5/api/)(2006), JDK1.6(2006) | [Spring MVC 2.5](https://docs.spring.io/spring-framework/docs/2.5.x/reference/mvc.html) |
-| Minimum Tomcat version: | 6.0.0 (2007)                                                 | /                                                            |
-
-![image-20210909180514938](../images/image-20210909180514938.png)
-
-By default, the listener will load an XML application context from applicationContext.xml.
-
-![image-20210901185354636](../images/image-20210901185354636.png)
-
-And the dispatch servlet will load an XML application context from dispatchServlet-servlet.xml.
-
-![image-20210901185522325](../images/image-20210901185522325.png)
-
-We can show hello world controller as below.
-
-![image-20210909180918831](../images/image-20210909180918831.png)
-
-![image-20210909181059729](../images/image-20210909181059729.png)
-
-### 7.2 **Programmatic Configuration With** Servlet 3.0
-
-**Version 3 of the Servlet API has made configuration through the \*web.xml\* file completely optional.** Libraries can provide their web fragments, which are pieces of XML configuration that can register listeners, filters, servlets and so on.
-
-Also, users have access to an API that allows defining programmatically every element of a servlet-based application.
-
-#### 7.2.1 servlet3.0-helloworld
-
-| Spec versions:          | Servlet 3.0                                                  |
-| ----------------------- | ------------------------------------------------------------ |
-| Main page:              | [JSR315](https://www.jcp.org/en/jsr/summary?id=315)          |
-| Stable:                 | Final Release                                                |
-| Date:                   | 10 Dec, 2009                                                 |
-| Download Page:          | [Overview](https://jcp.org/aboutJava/communityprocess/final/jsr315/index.html) [Direct Download](https://download.oracle.com/otndocs/jcp/servlet-3.0-fr-eval-oth-JSpec/) |
-| Online Javadoc:         | [Java EE 6](https://docs.oracle.com/javaee/6/api/)(2009), JDK1.6(2006) |
-| Minimum Tomcat version: | 7.0.0 (2010)                                                 |
-
-![image-20210909182759183](../images/image-20210909182759183.png)
-
-Now, let's test.
-
-![image-20210903132932282](../images/image-20210903132932282.png)
-
-#### 7.2.2 servlet3.0+springmvc3.0
-
-| Spec versions:          | Servlet 3.0                                                  | Spring MVC 3.0.0.RELEASE                                     |
-| ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Main page:              | [JSR315](https://www.jcp.org/en/jsr/summary?id=315)          | [Spring MVC 3.0](https://docs.spring.io/spring-framework/docs/3.0.x/spring-framework-reference/html/mvc.html) |
-| Stable:                 | Final Release                                                | Final Release                                                |
-| Date:                   | 10 Dec, 2009                                                 | Dec, 2009                                                    |
-| Download Page:          | [Overview](https://jcp.org/aboutJava/communityprocess/final/jsr315/index.html) [Direct Download](https://download.oracle.com/otndocs/jcp/servlet-3.0-fr-eval-oth-JSpec/) | [Overview](https://jcp.org/aboutJava/communityprocess/final/jsr340/index.html) [Direct Download](https://mvnrepository.com/artifact/org.springframework/spring-web/3.0.0.RELEASE) |
-| Online Javadoc:         | [Java EE 6](https://docs.oracle.com/javaee/6/api/)(2009), JDK1.6(2006) | [Spring MVC 3.0](https://docs.spring.io/spring-framework/docs/3.0.x/spring-framework-reference/html/mvc.html) |
-| Minimum Tomcat version: | 7.0.0 (2010)                                                 | /                                                            |
-
-##### 7.2.2.1 servlet3.0-springmvc3.0-helloworld1
-
-![image-20210909143608482](../images/image-20210909143608482.png)
-
-![image-20210909143814027](../images/image-20210909143814027.png)
-
-![image-20210909144719169](../images/image-20210909144719169.png)
-
-![image-20210909144143687](../images/image-20210909144143687.png)
-
-![image-20210909150032612](../images/image-20210909150032612.png)
-
-##### 7.2.2.2 servlet3.0-springmvc3.0-helloworld2
-
-![image-20210909151351785](../images/image-20210909151351785.png)
-
-![image-20210909152047692](../images/image-20210909152047692.png)
-
-![image-20210909152131056](../images/image-20210909152131056.png)
-
-![image-20210909152817674](../images/image-20210909152817674.png)
-
-![image-20210909152924856](../images/image-20210909152924856.png)
-
-![image-20210909153033310](../images/image-20210909153033310.png)
-
-#### 7.2.2 servlet3.0+springmvc3.1
-
-The *spring-web* module makes use of these features and offers its API to register components of the application when it starts.
-
-Spring scans the application's classpath for instances of the *org.springframework.web.WebApplicationInitializer* class. This is an interface with a single method, *void onStartup(ServletContext servletContext) throws ServletException*, that's invoked upon application startup.
-
-Let's now look at how we can use this facility to create the same types of root web application contexts that we've seen earlier.
-
-| Spec versions:          | Servlet 3.0                                                  | Spring MVC 3.1.0.RELEASE                                     |
-| ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Main page:              | [JSR315](https://www.jcp.org/en/jsr/summary?id=315)          | [Spring MVC 3.1](https://docs.spring.io/spring-framework/docs/3.1.x/spring-framework-reference/html/mvc.html) |
-| Stable:                 | Final Release                                                | Final Release                                                |
-| Date:                   | 10 Dec, 2009                                                 | Dec, 2011                                                    |
-| Download Page:          | [Overview](https://jcp.org/aboutJava/communityprocess/final/jsr315/index.html) [Direct Download](https://download.oracle.com/otndocs/jcp/servlet-3.0-fr-eval-oth-JSpec/) | [Overview](https://jcp.org/aboutJava/communityprocess/final/jsr340/index.html) [Direct Download](https://mvnrepository.com/artifact/org.springframework/spring-web/3.1.0.RELEASE) |
-| Online Javadoc:         | [Java EE 6](https://docs.oracle.com/javaee/6/api/)(2009), JDK1.6(2006) | [Spring MVC 3.1](https://docs.spring.io/spring-framework/docs/3.1.x/spring-framework-reference/html/mvc.html) |
-| Minimum Tomcat version: | 7.0.0 (2010)                                                 | /                                                            |
-
-![image-20210909184335118](../images/image-20210909184335118.png)
-
-![image-20210910124314829](../images/image-20210910124314829.png)
-
-So we can see there is a bug that tomcat 7 cannot load third party jar meta-info services. This bug is fixed in  tomcat 8.
-
