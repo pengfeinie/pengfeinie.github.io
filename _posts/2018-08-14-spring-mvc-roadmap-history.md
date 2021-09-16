@@ -4,39 +4,6 @@ date: 2018-08-14
 tags:
   - spring
 ---
-When using Spring in a web application, we have several options for organizing the application contexts that wire it all up. In this article, we're going to analyze and explain the most common options that Spring offers.
-
-* [1\. Introduction](#1-introduction)
-* [2\. Java Ecosystem](#2-java-ecosystem)
-  * [2\.1 Servlet timeline](#21-servlet-timeline)
-  * [2\.2 J2EE timeline](#22-j2ee-timeline)
-  * [2\.3 Java timeline](#23-java-timeline)
-* [3\. Service Provider Interface](#3-service-provider-interface)
-  * [3\.1 Overview](#31-overview)
-  * [3\.2 Terms and Definitions of Java SPI](#32-terms-and-definitions-of-java-spi)
-* [4\. Servlet container](#4-servlet-container)
-  * [4\.1 Overview](#41-overview)
-* [5\. Spring](#5-spring)
-* [6\. How to Register Servlet](#6-how-to-register-servlet)
-  * [6\.1 Xml\-based](#61-xml-based)
-  * [6\.2 Annotations\-based](#62-annotations-based)
-  * [6\.3 Programmatic\-based](#63-programmatic-based)
-* [7\. Web Application](#7-web-application)
-  * [7\.1 Servlet 2\.5](#71-servlet-25)
-    * [7\.1\.1 <a href="https://github\.com/pengfeinie/springmvc\-history/tree/master/servlet2\.5\-helloworld">Servlet2\.5\-helloworld</a>](#711-servlet25-helloworld)
-    * [7\.1\.2 <a href="https://github\.com/pengfeinie/springmvc\-history/tree/master/servlet2\.5\-springmvc2\.5\-hellow
-      orld">Servlet2\.5\-springmvc2\.5\-helloworld</a>](#712-servlet25-springmvc25-helloworld)
-  * [7\.2 Servlet 3\.0](#72-servlet-30)
-    * [7\.2\.1 <a href="https://github\.com/pengfeinie/springmvc\-history/tree/master/servlet3\.0\-helloworld">Servlet3\.0\-helloworld</a>](#721-servlet30-helloworld)
-    * [7\.2\.2 Servlet3\.0\+springmvc3\.0](#722-servlet30springmvc30)
-      * [7\.2\.2\.1 <a href="https://github\.com/pengfeinie/springmvc\-history/tree/master/servlet3\.0\-springmvc3\.0\-h
-        elloworld1">Servlet3\.0\-springmvc3\.0\-helloworld1</a>](#7221-servlet30-springmvc30-helloworld1)
-      * [7\.2\.2\.2 <a href="https://github\.com/pengfeinie/springmvc\-history/tree/master/servlet3\.0\-springmvc3\.0\-h
-        elloworld2">Servlet3\.0\-springmvc3\.0\-helloworld2</a>](#7222-servlet30-springmvc30-helloworld2)
-    * [7\.2\.3 Servlet3\.0\+springmvc3\.1](#723-Servlet30springmvc31)
-      * [7\.2\.3\.1 <a href="https://github\.com/pengfeinie/springmvc\-history/tree/master/servlet3\.0\-springmvc3\.1\-h
-        elloworld0">Servlet3\.0\-springmvc3\.1\-helloworld0</a>](#7231-servlet30-springmvc31-helloworld0)
-
 ## 1. Introduction
 
 When using Spring in a web application, we have several options for organizing the application contexts that wire it all up. In this article, we're going to analyze and explain the most common options that Spring offers.
