@@ -1,6 +1,6 @@
 ---
 title: 'How Convolutional Neural Networks Work'
-date: 2020-05-04
+date: 2020-05-05
 tags:
   - How Convolutional Neural Networks Work
 ---

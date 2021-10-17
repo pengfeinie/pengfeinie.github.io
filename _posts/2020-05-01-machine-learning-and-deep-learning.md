@@ -1,6 +1,6 @@
 ---
 title: 'machine learning and deep learning'
-date: 2021-05-01
+date: 2020-05-01
 tags:
   - Machine learning
   - deep learning
