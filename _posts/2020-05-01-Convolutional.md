@@ -49,9 +49,27 @@ In order to find the *total likelihood* of the ball reaching a total distance of
 
 We already know that the probability for each case of a+b=ca+b=c is simply f(a)⋅g(b)f(a)⋅g(b). So, summing over every solution to a+b=ca+b=c, we can denote the total likelihood as:
 
-```
-<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">  <munder>    <mo>∑<!-- ∑ --></mo>    <mrow class="MJX-TeXAtom-ORD">      <mi>a</mi>      <mo>+</mo>      <mi>b</mi>      <mo>=</mo>      <mi>c</mi>    </mrow>  </munder>  <mi>f</mi>  <mo stretchy="false">(</mo>  <mi>a</mi>  <mo stretchy="false">)</mo>  <mo>⋅<!-- ⋅ --></mo>  <mi>g</mi>  <mo stretchy="false">(</mo>  <mi>b</mi>  <mo stretchy="false">)</mo> </math>
-```
+![image-20211017132032577](../images/image-20211017132032577.png)
+
+Turns out, we’re doing a convolution! In particular, the convolution of ff and gg, evluated at cc is defined:
+
+![image-20211017132217488](../images/image-20211017132217488.png)
+
+If we substitute b=c−ab=c−a, we get:
+
+![image-20211017132354398](../images/image-20211017132354398.png)
+
+This is the standard definition[2](https://colah.github.io/posts/2014-07-Understanding-Convolutions/#fn2) of convolution.
+
+To make this a bit more concrete, we can think about this in terms of positions the ball might land. After the first drop, it will land at an intermediate position aa with probability f(a)f(a). If it lands at aa, it has probability g(c−a)g(c−a) of landing at a position cc.
+
+![img](../images/ProbConv-OnePath.png)
+
+
+
+To get the convolution, we consider all intermediate positions.
+
+![img](../images/ProbConv-SumPaths.png)
 
 
 
