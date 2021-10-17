@@ -75,4 +75,4 @@ To get the convolution, we consider all intermediate positions.
 
 **links**
 
-https://colah.github.io/posts/2014-07-Understanding-Convolutions/
+[https://colah.github.io/posts/2014-07-Understanding-Convolutions/](https://colah.github.io/posts/2014-07-Understanding-Convolutions/)
