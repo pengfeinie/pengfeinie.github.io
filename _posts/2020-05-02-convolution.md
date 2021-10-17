@@ -1,6 +1,6 @@
 ---
 title: 'convolution'
-date: 2021-06-04
+date: 2021-05-02
 tags:
   - convolution
 ---

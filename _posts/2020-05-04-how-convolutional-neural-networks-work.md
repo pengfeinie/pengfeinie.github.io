@@ -1,6 +1,6 @@
 ---
 title: 'How Convolutional Neural Networks Work'
-date: 2020-05-01
+date: 2020-05-04
 tags:
   - How Convolutional Neural Networks Work
 ---
@@ -90,7 +90,7 @@ Fully connected layers, like the rest, can be stacked because their outputs (a l
 
 ### Backpropagation
 
- 
+
 [![img](http://brohrer.github.io/images/cnn15.png)](https://youtu.be/FmpDIaiMIeA?t=18m13s)
 
 Our story is filling in nicely, but it still has a huge hole—Where do features come from? and How do we find the weights in our fully connected layers? If these all had to be chosen by hand, CNNs would be a good deal less popular than they are. Luckily, a bit of machine learning magic called backpropagation does this work for us.
@@ -103,7 +103,7 @@ As is probably apparent, backpropagation is another expensive computing step, an
 
 ### Hyperparameters
 
- 
+
 Unfortunately, not every aspect of CNNs can be learned in so straightforward a manner. There is still a long list of decisions that a CNN designer must make.
 
 - For each convolution layer, How many features? How many pixels in each feature?
@@ -116,7 +116,7 @@ With so many combinations and permutations, only a small fraction of the possibl
 
 ### Beyond images
 
- 
+
 [![img](http://brohrer.github.io/images/cnn16.png)](https://youtu.be/FmpDIaiMIeA?t=21m26s)
 
 While our X and O example involves images, CNNs can be used to categorize other types of data too. The trick is, whatever data type you start with, to transform it to make it look like an image. For instance, audio signals can be chopped into short time chunks, and then each chunk broken up into bass, midrange, treble, or finer frequency bands. This can be represented as a two-dimensional array where each column is a time chunk and each row is a frequency band. “Pixels” in this fake picture that are close together are closely related. CNNs work well on this. Researchers have gotten quite creative. They have adapted text data for natural language processing and even chemical data for drug discovery.

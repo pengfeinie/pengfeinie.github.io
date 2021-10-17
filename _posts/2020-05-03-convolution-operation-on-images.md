@@ -1,6 +1,6 @@
 ---
 title: 'convolution operation on images'
-date: 2020-05-01
+date: 2020-05-03
 tags:
   - convolution operation on images
 ---
