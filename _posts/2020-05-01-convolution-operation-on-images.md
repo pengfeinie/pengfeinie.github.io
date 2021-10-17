@@ -137,7 +137,7 @@ On the other hand, convolution is defined as:
 **links**
 
 1. [https://indoml.com/2018/03/07/student-notes-convolutional-neural-networks-cnn-introduction/](https://indoml.com/2018/03/07/student-notes-convolutional-neural-networks-cnn-introduction/)
-
 2. [https://insightimi.wordpress.com/2021/02/22/convolution_neural_network/](https://insightimi.wordpress.com/2021/02/22/convolution_neural_network/)
 3. [https://www.commonlounge.com/discussion/244616b76d3d40f88e8f12103a22743d](https://www.commonlounge.com/discussion/244616b76d3d40f88e8f12103a22743d)
 4. [https://www.javatpoint.com/convolutional-neural-network-in-tensorflow](https://www.javatpoint.com/convolutional-neural-network-in-tensorflow)
+5. [https://stats.stackexchange.com/questions/269854/are-there-mathematical-reasons-for-convolution-in-neural-networks-beyond-expedie](https://stats.stackexchange.com/questions/269854/are-there-mathematical-reasons-for-convolution-in-neural-networks-beyond-expedie)
