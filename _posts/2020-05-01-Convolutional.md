@@ -34,3 +34,21 @@ Now after this first drop, we pick the ball up and drop it from another height a
 If we fix the result of the first drop so we know the ball went distance aa, for the ball to go a total distance cc, the distance traveled in the second drop is also fixed at bb, where a+b=ca+b=c. So the probability of this happening is simply f(a)⋅g(b)f(a)⋅g(b).[1](https://colah.github.io/posts/2014-07-Understanding-Convolutions/#fn1)
 
 Let’s think about this with a specific discrete example. We want the total distance cc to be 3. If the first time it rolls, a=2a=2, the second time it must roll b=1b=1 in order to reach our total distance a+b=3a+b=3. The probability of this is f(2)⋅g(1)f(2)⋅g(1).
+
+![img](../images/ProbConv-split-21.png)
+
+However, this isn’t the only way we could get to a total distance of 3. The ball could roll 1 units the first time, and 2 the second. Or 0 units the first time and all 3 the second. It could go any aa and bb, as long as they add to 3.
+
+![img](../images/ProbConv-splits-12-03.png)
+
+The probabilities are f(1)⋅g(2)f(1)⋅g(2) and f(0)⋅g(3)f(0)⋅g(3), respectively.
+
+In order to find the *total likelihood* of the ball reaching a total distance of cc, we can’t consider only one possible way of reaching cc. Instead, we consider *all the possible ways* of partitioning cc into two drops aa and bb and sum over the *probability of each way*.
+
+![image-20211017122446318](../images/image-20211017122446318.png)
+
+We already know that the probability for each case of a+b=ca+b=c is simply f(a)⋅g(b)f(a)⋅g(b). So, summing over every solution to a+b=ca+b=c, we can denote the total likelihood as:
+
+```
+<math xmlns="http://www.w3.org/1998/Math/MathML" display="block">  <munder>    <mo>∑<!-- ∑ --></mo>    <mrow class="MJX-TeXAtom-ORD">      <mi>a</mi>      <mo>+</mo>      <mi>b</mi>      <mo>=</mo>      <mi>c</mi>    </mrow>  </munder>  <mi>f</mi>  <mo stretchy="false">(</mo>  <mi>a</mi>  <mo stretchy="false">)</mo>  <mo>⋅<!-- ⋅ --></mo>  <mi>g</mi>  <mo stretchy="false">(</mo>  <mi>b</mi>  <mo stretchy="false">)</mo> </math>
+```
