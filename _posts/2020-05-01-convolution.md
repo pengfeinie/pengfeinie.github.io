@@ -1,8 +1,8 @@
 ---
-title: 'Convolutional'
+title: 'convolution'
 date: 2021-06-04
 tags:
-  - Convolutional
+  - convolution
 ---
 
 
