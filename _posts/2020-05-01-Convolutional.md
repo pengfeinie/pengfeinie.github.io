@@ -52,3 +52,9 @@ We already know that the probability for each case of a+b=ca+b=c is simply f(a)�
 ```
 <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">  <munder>    <mo>∑<!-- ∑ --></mo>    <mrow class="MJX-TeXAtom-ORD">      <mi>a</mi>      <mo>+</mo>      <mi>b</mi>      <mo>=</mo>      <mi>c</mi>    </mrow>  </munder>  <mi>f</mi>  <mo stretchy="false">(</mo>  <mi>a</mi>  <mo stretchy="false">)</mo>  <mo>⋅<!-- ⋅ --></mo>  <mi>g</mi>  <mo stretchy="false">(</mo>  <mi>b</mi>  <mo stretchy="false">)</mo> </math>
 ```
+
+
+
+**links**
+
+https://colah.github.io/posts/2014-07-Understanding-Convolutions/
