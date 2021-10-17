@@ -21,3 +21,12 @@ The convolution of *f* and *g* is written *f*∗*g*, denoting the operator with 
 
 ![image-20211016131400122](../images/image-20211016131400122.png)
 
+## Lessons from a Dropped Ball
+
+Imagine we drop a ball from some height onto the ground, where it only has one dimension of motion. *How likely is it that a ball will go a distance cc if you drop it and then drop it again from above the point at which it landed?*
+
+Let’s break this down. After the first drop, it will land aa units away from the starting point with probability f(a)f(a), where ff is the probability distribution.
+
+Now after this first drop, we pick the ball up and drop it from another height above the point where it first landed. The probability of the ball rolling bb units away from the new starting point is g(b)g(b), where gg may be a different probability distribution if it’s dropped from a different height.
+
+![img](../images/ProbConv-fagb.png)
