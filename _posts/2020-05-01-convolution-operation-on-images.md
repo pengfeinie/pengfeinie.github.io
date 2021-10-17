@@ -50,6 +50,26 @@ Some padding terminologies:
 - “**valid**” padding: no padding
 - “**same**” padding: padding so that the output dimension is the same as the input
 
+### Pooling
+
+Pooling layer is used to reduce the size of the representations and to speed up calculations, as well as to make some of the features it detects a bit more robust. Sample types of pooling are **max pooling** and **avg pooling**, but these days max pooling is more common.
+
+![image-20211017150552020](../images/image-20211017150552020.png)
+
+Interesting properties of pooling layer:
+
+- it has hyper-parameters:
+  - **size** (***f***)
+  - **stride** (***s***)
+  - **type** (max or avg)
+- but it doesn’t have parameter; there’s nothing for gradient descent to learn.
+
+When done on input with multiple channels, pooling reduces the height and width (nW and nH) but keeps nC unchanged:
+
+![image-20211017150711361](../images/image-20211017150711361.png)
+
+
+
 ## Convolution Operation on Volume
 
 When the input has more than one channels (e.g. an RGB image), the filter should have matching number of channels. To calculate one output cell, perform convolution on each matching channel, then add the result together.
