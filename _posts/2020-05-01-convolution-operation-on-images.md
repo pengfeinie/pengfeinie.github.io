@@ -66,9 +66,13 @@ Multiple filters can be used in a convolution layer to detect multiple features.
 
 The total number of multiplications to calculate the result is (4 x 4 x 2) x (3 x 3 x 3) = 864.
 
+## Calculating the Output Dimension
 
+The output dimension is calculated with the following formula:
 
+![n^{[l]} = \lfloor \frac {n^{[l-1]} +2p^{[l-1]}-f^{[l]}} {s^{[l]}} + 1 \rfloor  ](E:\my\pengfeinie.github.io\images\rfloor++&bg=ffffff&fg=000000&s=3&c=20201002)
 
+where the ![\lfloor \ \rfloor ](https://s0.wp.com/latex.php?latex=%5Clfloor+%5C+%5Crfloor+&bg=ffffff&fg=000000&s=0&c=20201002) symbols denote *math.floor()* operation.
 
 **links**
 
