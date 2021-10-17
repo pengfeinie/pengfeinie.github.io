@@ -136,3 +136,4 @@ However if you can make your problem look like finding patterns in an image, the
 **links**
 
 1. [https://www.kdnuggets.com/2016/08/brohrer-convolutional-neural-networks-explanation.html](https://www.kdnuggets.com/2016/08/brohrer-convolutional-neural-networks-explanation.html)
+2. [https://e2eml.school/how_convolutional_neural_networks_work.html](https://e2eml.school/how_convolutional_neural_networks_work.html)
