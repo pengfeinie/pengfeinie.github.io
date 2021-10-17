@@ -118,6 +118,22 @@ The output dimension is calculated with the following formula:
 
 where the ![\lfloor \ \rfloor ](https://s0.wp.com/latex.php?latex=%5Clfloor+%5C+%5Crfloor+&bg=ffffff&fg=000000&s=0&c=20201002) symbols denote *math.floor()* operation.
 
+
+
+## Mathematical reasons for convolution in neural networks beyond expediency
+
+On the other hand, convolution is defined as:
+
+![image-20211017155018053](../images/image-20211017155018053.png)
+
+![](../images/yLrhS.png)
+
+
+
+
+
+![enter image description here](../images/VmW9l.png)
+
 **links**
 
 1. [https://indoml.com/2018/03/07/student-notes-convolutional-neural-networks-cnn-introduction/](https://indoml.com/2018/03/07/student-notes-convolutional-neural-networks-cnn-introduction/)
