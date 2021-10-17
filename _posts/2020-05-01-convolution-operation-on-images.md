@@ -80,11 +80,19 @@ The total number of multiplications to calculate the result is (4 x 4) x (3 x 3 
 
 ## Convolution Operation with Multiple Filters
 
+So far, we have been performing convolution operations on a single matrix or a single channel image which is of a greyscale image. As explained before, the colour images generally consist of 3 channels of red, green and blue RGB. Here the matrix consists of the 3 layers and the filters to which the they are multiplied are of 3 layers too. They values obtained from all three layers are added together to form a single layer matrix. This is also known as the convolution on volume.
+
+And a similar process is carried out of padding, striding and here in the diagram below the red represents the red channel and respectively for others of a total of 3 layers. We can also see that how striding takes place where the mask shifts by 1 unit.
+
+![](../images/1_ciDgQEjViWLnCbmX-EeSrA.gif)
+
 Multiple filters can be used in a convolution layer to detect multiple features. The output of the layer then will have the same number of channels as the number of filters in the layer.
 
 ![image-20211017145753479](../images/image-20211017145753479.png)
 
 The total number of multiplications to calculate the result is (4 x 4 x 2) x (3 x 3 x 3) = 864.
+
+
 
 ## Calculating the Output Dimension
 
