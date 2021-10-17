@@ -5,6 +5,42 @@ tags:
   - convolution operation on images
 ---
 
+## How do computers see an image
+
+We all love to see beautiful images, but have you ever thought how do computers see an image? In this tutorial, we will give an explanation of how images are stored in a computer.
+
+![](E:\my\pengfeinie.github.io\images\loZu3apAxG8Dv3b62Q8XlaaTt1520496644_kc.jpg)
+
+Consider the above image, a normal human can easily tell that there is a cat in the image. But, can computers really see the cat? The answer is no, computers see a matrix of numbers (between 0 to 255). Broadly, we can classify images as grayscale images or color images.
+
+First, we will discuss grayscale images and then move on to color images. The image above is a grayscale image — that means each pixel represents the brightness of a pixel, which is the smallest controllable element of a picture represented on the screen.
+
+Let us first see what computers see in the case of the above image.
+
+![iuXpgBq19r5qcgOJXWgrFmJT71520496651_kc](E:\my\pengfeinie.github.io\images\iuXpgBq19r5qcgOJXWgrFmJT71520496651_kc.png)
+
+We've resized the above image to 18 * 18 pixels in order to make it easy to understand. Unlike us, the computers see an image as a 2D matrix. You might have heard people saying that this image is of size 1800*700 or 1300 * 700. This size shows width and height of an image. In other words, if size is 1300 * 700 then there are 1300 pixels horizontally and 700 vertically. That means there are total 910,000 (1300*700) pixels. If the image is the size of 700 * 500 then the dimensionality of the matrix will be (700, 500). Here, each element in the matrix represents the intensity of brightness in that pixel. Here, 0 represents black and 255 represents white color, and any value between these two is just a shade of gray.
+
+
+
+<img src="E:\my\pengfeinie.github.io\images\convolutional-neural-network-in-tensorflow2.png" alt="convolutional-neural-network-in-tensorflow2" style="zoom:150%;" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ## Why Convolutions
@@ -105,3 +141,7 @@ where the ![\lfloor \ \rfloor ](https://s0.wp.com/latex.php?latex=%5Clfloor+%5C+
 **links**
 
 1. [https://indoml.com/2018/03/07/student-notes-convolutional-neural-networks-cnn-introduction/](https://indoml.com/2018/03/07/student-notes-convolutional-neural-networks-cnn-introduction/)
+
+2. [https://insightimi.wordpress.com/2021/02/22/convolution_neural_network/](https://insightimi.wordpress.com/2021/02/22/convolution_neural_network/)
+3. [https://www.commonlounge.com/discussion/244616b76d3d40f88e8f12103a22743d](https://www.commonlounge.com/discussion/244616b76d3d40f88e8f12103a22743d)
+4. [https://www.javatpoint.com/convolutional-neural-network-in-tensorflow](https://www.javatpoint.com/convolutional-neural-network-in-tensorflow)
