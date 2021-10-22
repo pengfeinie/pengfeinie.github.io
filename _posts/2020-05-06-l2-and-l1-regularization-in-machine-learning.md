@@ -5,6 +5,10 @@ tags:
   - Regularization
 ---
 
+Regularization is any modification we make to learning algorthm that is extended to reduce its generalization error but not its training error.
+
+
+
 **Overfitting** is a phenomenon that occurs when a Machine Learning model is constraint to training set and not able to perform well on unseen data. 
 
 ![img](../images/overfitting_21.png)
