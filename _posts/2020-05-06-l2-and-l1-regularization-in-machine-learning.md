@@ -35,6 +35,8 @@ Here’s the general setup of regularization for a neural network model, where W
 
 Every neural network has a loss function that is used in training to adjust the neural network’s weights. The loss function measures how different the neural network’s predictions are from the truth.
 
+λ is a hyperparameter that adjusts the tradeoff between having low training loss and having low weights.
+
 - λ (lambda) determines how strongly the regularization will influence the network’s training.
   - If you set λ=0, there is no regularization at all, because you’ve zeroed out the entire regularization term.
   - If you set λ= 1,000,000,000 then that would be extremely strong regularization, which would make it hard for your model to learn anything.
@@ -100,6 +102,8 @@ In addition, we can control the regularization strength via the regularization p
 3. [https://www.slideshare.net/KienLe47/regularization-in-deep-learning](https://www.slideshare.net/KienLe47/regularization-in-deep-learning)
 
 4. [https://glassboxmedicine.com/2019/06/08/regularization-for-neural-networks-with-framingham-case-study/](https://glassboxmedicine.com/2019/06/08/regularization-for-neural-networks-with-framingham-case-study/)
+
+5. [https://cmci.colorado.edu/classes/INFO-4604/files/slides-6_regularization.pdf](https://cmci.colorado.edu/classes/INFO-4604/files/slides-6_regularization.pdf)
 
    
 
