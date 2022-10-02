@@ -9,4 +9,6 @@ redirect_from:
 
 {% include base_path %}
 
-<embed src="{{ site.url }}{{ site.baseurl }}/assets/pdfs/Yu_Zhang_CV.pdf" type="application/pdf" height="100%" width="100%"/>
+<!-- <embed src="{{ site.url }}{{ site.baseurl }}/assets/pdfs/Yu_Zhang_CV.pdf" type="application/pdf" height="100%" width="100%"/> -->
+
+<embed src="{{ site.url }}{{ site.baseurl }}/assets/pdfs/niepengfei_resume.pdf" type="application/pdf" height="100%" width="100%"/>
